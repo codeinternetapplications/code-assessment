@@ -1,0 +1,93 @@
+.owl-carousel {
+  touch-action: manipulation; // prevent js errors
+}
+.owl-theme {
+  position: relative;
+  .owl-nav {
+    font-size: 1rem;
+    opacity: 0.5;
+    transition: all 0.2s ease-in-out;
+    .touch & {
+      opacity: 1;
+    }
+    .owl-prev,
+    .owl-next {
+      display: block;
+      box-sizing: border-box;
+      position: absolute;
+      top: 50%;
+      margin: 0 1px;
+      transform: translateY(-50%);
+      text-align: center;
+      cursor: pointer;
+      background: rgba(255,255,255,0.6);
+      color: #000000;
+      transition: all 0.2s ease-in-out;
+      -webkit-tap-highlight-color: transparent;
+      &:before {
+        @extend .la;
+        width: 2em;
+        line-height: 2em;
+        text-align: center;
+        transition: all 0.2s ease-in-out;
+      }
+      &:hover {
+        text-decoration: none;
+        background: rgba(255,255,255,0.9);
+      }
+      &.disabled {
+        opacity: 0.5;
+        background: rgba(255,255,255,0.6);
+      }
+    }
+    .owl-prev {
+      left: 0px;
+      &:before {
+        @extend .la-angle-left;
+      }
+    }
+    .owl-next {
+      right: 0px;
+      &:before {
+        @extend .la-angle-right;
+      }
+    }
+  }
+  &:hover {
+    .owl-nav {
+      opacity: 1;
+      .owl-prev,
+      .owl-next {
+        &.disabled {
+          opacity: 0.25;
+        }
+      }
+    }
+  }
+  .owl-dots {
+    text-align: center;
+    margin-top: 10px;
+    -webkit-tap-highlight-color: transparent;
+
+    .owl-dot {
+      display: inline-block;
+      zoom: 1;
+      span {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin: 5px 7px;
+        background: #ffffff;
+        border: 1px solid $color-border;
+        display: block;
+        transition: background 200ms ease;
+        -webkit-backface-visibility: visible;
+      }
+    }
+
+    .owl-dot.active span,
+    .owl-dot:hover span {
+      background: $color-border;
+    }
+  }
+}

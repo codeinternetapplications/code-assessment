@@ -1,0 +1,170 @@
+// Desktop header primary navigation
+.header-navigation__primary {
+  font-family: $body-heading-fontfamily;
+  @include mqmin($bp-header) {
+    text-align: right;
+    .header-nav-list {
+      display: inline-block;
+      text-align: left;
+    }
+  }
+  .header-nav-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 14px;
+    @include mqmin($bp-header) {
+      margin-right: 100px;
+    }
+    // Level 1 navigation
+    &.level-1 {
+      @extend .clearfix;
+      // .level 1 li
+      .header-nav-list-item.level-1 {
+        position: relative;
+        &.has-subnav {
+          .header-nav-link.level-1 {
+            padding-right: 30px;
+          }
+          .header-nav-list.level-2 {
+            display: none;
+            max-height: 1000px;
+            overflow: visible;
+          }
+        }
+        .touch &.collapsible__is-open {
+          .header-nav-link.level-1 .header-nav-link-trigger {
+            .la {
+              transform: rotateZ(-180deg);
+            }
+            &:before {
+              border-left: 1px solid rgba(255, 255, 255, 0.5);
+            }
+          }
+        }
+      }
+    }
+    // Level 2 navigation
+    &.level-2 {
+      background: #ffffff;
+      @include mqmin($bp-header) {
+        border: 1px solid $color-border;
+        border-top: 0;
+        position: absolute;
+        top: 100%;
+        min-width: 200px;
+      }
+    }
+    // Level 3 navigation
+    &.level-3 {
+      background: $body-background-accent;
+      @include mqmin($bp-header) {
+        background: #ffffff;
+        position: absolute;
+        left: 100%;
+        top: 0;
+        border: 1px solid $color-border;
+        min-width: 200px;
+      }
+    }
+    // .level 3 li
+    .header-nav-list-item.level-3 {
+      position: relative;
+    }
+  }
+}
+.header-navigation__secondary {
+  position: relative;
+  display: inline-block;
+  @include mqmin($bp-header) {
+    padding: 0 3px 0 0;
+  }
+  .header-nav-link-wrapper {
+    display: inline-block;
+    a {
+      display: block;
+      padding: 0 4px;
+      @include mqmin($bp-header) {
+        padding: 0 10px;
+      }
+    }
+  }
+}
+.header-navigation__extra {
+  .header-nav-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    @include mqmin($bp-header) {
+      padding-left: 80px;
+      display: inline-block;
+    }
+  }
+}
+@keyframes color {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.7;
+  }
+}
+// Header navigation links/icons
+.header-nav-link {
+  // .level 1 li > a
+  &.level-1 {
+    display: block;
+    background: rgba(255, 255, 255, 0);
+    font-weight: 500;
+    padding: 26px 10px;
+    @include mqmin($bp-header) {
+      padding: 26px 20px;
+    }
+    @media screen and (max-width: 1255px) {
+      padding: 26px 10px;
+    }
+    &:hover,
+    &:focus,
+    &:active {
+      text-decoration: none;
+    }
+    .no-touch &:hover,
+    .no-touch &:focus,
+    .no-touch &:active {
+      animation: color 0.2s forwards; //animation instead of transition, because of transition delay
+    }
+  }
+  // .level 2 li > a
+  &.level-2 {
+    display: block;
+    padding: 10px;
+    color: $body-text-color;
+    background: #ffffff;
+    &:hover,
+    &:focus,
+    &:active {
+      text-decoration: none;
+    }
+    .no-touch &:hover,
+    .no-touch &:focus,
+    .no-touch &:active {
+      color: $color-secondary-text;
+    }
+  }
+  // .level 3 li > a
+  &.level-3 {
+    display: block;
+    padding: 10px;
+    color: $body-text-color;
+    &:hover,
+    &:focus,
+    &:active {
+      text-decoration: none;
+    }
+    .no-touch &:hover,
+    .no-touch &:focus,
+    .no-touch &:active {
+      color: $color-secondary-text;
+    }
+  }
+}

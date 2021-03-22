@@ -1,0 +1,52 @@
+/*================ SETTINGS ================*/
+@import "settings.scss";
+
+/*================ FONTS ================*/
+@import "fonts/fonts.scss";
+@import "fonts/paymentfont.scss";
+
+/*================ MIXINS ================*/
+@import "mixins/mediaquery.scss";
+@import "mixins/mixins.scss";
+
+/*================ LIB ================*/
+@import "lib/normalize.scss";
+@import "lib/line-awesome.scss";
+@import "lib/owl.carousel.scss";
+
+/*================ GLOBAL ================*/
+@import "global/animations.scss";
+@import "global/body.scss";
+@import "global/col.scss";
+@import "global/content.scss";
+@import "global/container.scss";
+@import "global/form.scss";
+@import "global/helper-classes.scss";
+@import "global/icon.scss";
+@import "global/img.scss";
+@import "global/js.scss";
+@import "global/page.scss";
+@import "global/row.scss";
+@import "global/site.scss";
+@import "global/sticky-footer.scss";
+
+/*================ BLOCKS ================*/
+@import "blocks/ajax-cart.scss";
+@import "blocks/buttons.scss";
+@import "blocks/cart-icon.scss";
+@import "blocks/footer.scss";
+@import "blocks/header-nav.scss";
+@import "blocks/header.scss";
+@import "blocks/headings.scss";
+@import "blocks/hero-banner.scss";
+@import "blocks/highlighted-collection.scss";
+@import "blocks/image-grid.scss";
+@import "blocks/index.scss";
+@import "blocks/logo.scss";
+@import "blocks/newsletter.scss";
+@import "blocks/owl.theme.scss";
+@import "blocks/payment.scss";
+@import "blocks/slideshow.scss";
+@import "blocks/social-links.scss";
+@import "blocks/testimonials.scss";
+@import "blocks/usp-services.scss";

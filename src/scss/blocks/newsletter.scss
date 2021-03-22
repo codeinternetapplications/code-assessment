@@ -1,0 +1,71 @@
+.newsletter {
+  color: #ffffff;
+  background-color: $color-secondary-text;
+  .newsletter-logo {
+    .logo {
+      margin: 0;
+    }
+    svg path {
+      fill: #ffffff;
+    }
+  }
+  form {
+    margin-top: 10px;
+  }
+  .form-row {
+    max-width: 300px;
+    margin: $body-element-spacing auto 0;
+    border-bottom: 2px solid #ffffff;
+    input {
+      border: none;
+      font-size: 16px;
+      padding: 0;
+      color: #ffffff;
+      background: transparent;
+      &.button {
+        background: none;
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.0);
+        &::placeholder {
+          color: #ffffff;
+          opacity: 1;
+        }
+        &:focus::placeholder {
+          opacity: 0;
+        }
+      }
+      &.button {
+        width: 32px;
+        height: 32px;
+        overflow: hidden;
+        position: absolute;
+      }
+    }
+  }
+  .form-action {
+    &:after {
+      font: normal normal normal 40px/1 "LineAwesome";
+      color: #ffffff;
+      content: "\f274";
+    }
+  }
+  .container-content {
+    padding: $section-row-spacing;
+  }
+  // Home section newsletter
+  &.shopify-section {
+    text-align: center;
+  }
+  // Footer newsletter
+  footer & {
+    max-width: 100%;
+    @include mqmin($bp-footer) {
+      max-width: 250px;
+    }
+    @include mqmin($bp-xl) {
+      max-width: 290px;
+    }
+    .form-row {
+      max-width: 100%;
+    }
+  }
+}

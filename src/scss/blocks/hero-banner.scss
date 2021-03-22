@@ -1,0 +1,32 @@
+.hero-banner {
+  .content-wrapper {
+    .container-content {
+      padding-top: 40px;
+      padding-bottom: 40px;
+      width: 100%;
+    }
+    .content {
+      @include mqmin($bp-md) {
+        max-width: 33%;
+      }
+    }
+    @include mqmin($bp-md) {
+      background: transparent;
+      color: #ffff;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+    }
+  }
+  .image {
+    min-height: 356px;
+    position: relative;
+    @include mqmin($bp-lg) {
+      min-height: 600px;
+    }
+  }
+}

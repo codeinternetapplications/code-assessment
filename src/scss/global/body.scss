@@ -1,0 +1,104 @@
+// default vars
+$body-fontfamily: Arial, Helvetica, sans serif !default;
+$body-fontsize: 1em !default;
+$body-fontweight: 400 !default;
+$body-background: #fff !default;
+$body-line-height: 1.5em !default;
+$body-text-color: #000 !default;
+$body-link-color: #ff0000 !default;
+$body-element-spacing: 20px !default;
+$color-lines: #ccc !default;
+
+
+body,
+html {
+  height: 100%;
+}
+
+body {
+  font-size: 16px;
+  background: $body-background;
+  line-height: 24px;
+  color: $body-text-color;
+  font-family: $body-fontfamily;
+  font-weight: $body-fontweight;
+  font-style: $body-fontstyle;
+  overflow-x: hidden;
+  @include mqmin($bp-lg) {
+    line-height: 32px;
+    font-size: 20px;
+  }
+  a {
+    text-decoration: none;
+    color: #000000;
+    transition: all .2s ease-in;
+    &:focus,
+    &:active,
+    &:hover {
+        outline: none;
+        color: $color-funnel;
+    }
+    &.link-arrow,
+    &.link-arrow__back {
+      position: relative;
+      display: block;
+      text-decoration: none;
+      &::before,
+      &::after {
+        font: normal normal normal 40px/1 "LineAwesome"; color: inherit;
+        position: absolute;
+        top: -8px;
+        @include mqmin($bp-lg) {
+          top: -6px;
+        }
+      }
+      &:hover {
+       color: $color-funnel;
+      }
+    }
+    &.link-arrow {
+      &::after {
+        content: "\f274";
+        padding-left: 15px;
+      }
+    }
+    &.link-arrow__back {
+      padding-left: 60px;
+
+      &::before {
+        content: "\f273";
+        left: 0;
+      }
+    }
+  }
+
+  // set the same top margin for common content elements
+  p, ul, ol, figure, table, dl, blockquote, q, form {
+      margin: $body-element-spacing 0 0 0;
+  }
+
+  // remove top margins for nested elements
+  li ul,
+  li ol,
+  table table {
+      margin-top: 0;
+  }
+
+  // remove top margins for first element
+  h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child,
+  p:first-child,
+  ul:first-child, ol:first-child, li:first-child,
+  figure:first-child, table:first-child, dl:first-child, blockquote:first-child, q:first-child, form:first-child {
+      margin-top: 0;
+  }
+
+  hr {
+    background-color: $color-lines;
+    border-width: 0;
+    color: $color-lines;
+    height: 1px;
+    line-height: 0;
+    margin: $body-element-spacing 0;
+    // page-break-after: always;
+  }
+}

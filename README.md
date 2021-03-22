@@ -1,18 +1,19 @@
 ![Icon](https://bitbucket.org/code_internet_applications/code-assessment/raw/master/icon.png)
-# Code Assessment v3.0.0 #
+# Code Assessment v1.0.1 #
 This assessment will is an example of a project we build in the past. When working on a project like this you would normally code in liquid, working with actual data, template-logic and shopify-logic but for now we will use the html-result. We like to test your knowledge on html, scss, javascript, and git as working with Shopify and liquid are things you will have to learn first.
 
 All the source files you need are in the src folder, and will be in the dist folder after compilation. The files in the dist folder will not be committed in the GIT repository, these are only the results of your efforts.
 
 The assessment below describes what needs to be implemented. Don't be afraid to give feedback or mention points or optimizations you come across. The goal of this assessment is to get a clear image of how you approach several challenges and how you handle those. Keep in mind that code structure, semantics and value for the client are very important for in our projects. Finishing everything is not required to pass this assessment but we would like you to finish at least assessment 1 - 6.
 
-## Install ##
-1. Clone from repository
+## Setup & Install ##
+1. Fork this repository
+1. Clone from fork
 1. $ npm install
 1. $ npm run start
 
 ## Assessment ##
-Please make the assessments in order as listed below. Create a new feature with your name, commit after each assessment and make a Pull Request when you're done!
+Please make the assessments in order as listed below. In your fork, create a new feature with your name, commit after each assignment and make a Pull Request of your total fork when you're done!
 
 **Important**: The order and content of Shopify-sections can be changed by the customer in the Customizer so the order of shopify-sections must be flexible.
 
@@ -24,15 +25,14 @@ Please make the assessments in order as listed below. Create a new feature with 
 1. The footer navigation shows to much on mobile, make it 3 collapsible panes showing only the headings. Write a simple javascript/jQuery function that will make the panes collapse and open when the heading is clicked.
 1. The first shopify-section should get extra spacing on the top to show behind the header.
 1. The animation of the main navigation on mobile (click the hamburger) fails when you close and open the menu quickly, please fix this.
-1. The header has white text before scrolling the page. This works fine now that "hero-banner" is the first section but when the first shopify-section has a light background like "highlighted-collections", the white text in the header is unreadable. Put "highlighted-collections" as first section and add an extra class to the header that will toggle the header text black.
 
 ## Assessment designs ##
 ### Mobile design ###
 
-![Mobile design](https://bitbucket.org/code_internet_applications/code-assessment/raw/master/assessment-mobile.png)
+![Mobile design](https://raw.githubusercontent.com/codeinternetapplications/code-assessment/main/assessment-mobile.png)
 
 ### Desktop design ###
 
-![Desktop design](https://bitbucket.org/code_internet_applications/code-assessment/raw/master/assessment-desktop.png)
+![Desktop design](https://raw.githubusercontent.com/codeinternetapplications/code-assessment/main/assessment-desktop.png)
 
 **Good luck!**

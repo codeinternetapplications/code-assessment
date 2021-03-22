@@ -1,0 +1,17 @@
+.logo {
+  min-width: 135px;
+  display: block;
+  margin: 0 auto;
+  width: auto;
+  max-width: 150px;
+  @include mqmin($bp-header) {
+    max-width: 188px;
+    margin: 0 auto;
+  }
+  h1 & {
+    line-height: 0;
+  }
+  svg {
+    width: 100%;
+  }
+}

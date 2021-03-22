@@ -1,0 +1,7 @@
+<svg id="Icon_Cursor_Hover" data-name="Icon / Cursor Hover" xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 72 72">
+  <g id="Oval" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="2">
+    <circle cx="36" cy="36" r="36" stroke="none"/>
+    <circle cx="36" cy="36" r="35" fill="none"/>
+  </g>
+  <text id="Read" transform="translate(36 39)" fill="#fff" font-size="10" font-family="Helvetica" letter-spacing="0.2em"><tspan x="-16.892" y="0">READ</tspan></text>
+</svg>
