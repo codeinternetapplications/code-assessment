@@ -1,0 +1,181 @@
+// default vars
+$body-element-spacing: 20px !default;
+$color-border: #ccc !default;
+$image-background: #fff !default;
+$gutter: 25px !default;
+$mobile-space-scale: 0.7 !default;
+
+
+/* figures for images and embeds (video) */
+.img,
+.embed {
+  display: block;
+  margin: $body-element-spacing 0 0 0;
+  &:first-child {
+    margin-top: 0;
+  }
+  &.img__left {
+    @include mqmin($bp-md) {
+      float: left;
+      margin-right: 25px;
+      max-width: 33%;
+    }
+  }
+  &.img__right {
+    @include mqmin($bp-md) {
+      float: right;
+      margin-left: 25px;
+      max-width: 33%;
+    }
+  }
+  &.img__wide {
+    .placeholder-svg,
+    img {
+      margin: 0 auto;
+    }
+  }
+  &.img__fill {
+    .placeholder-svg,
+    img {
+      width: 100%;
+    }
+  }
+  &.img__centered {
+    .placeholder-svg,
+    img {
+      margin: 0 auto;
+    }
+  }
+  &.img__border {
+    .placeholder-svg,
+    img {
+      border: 1px solid $color-border;
+      background: $image-background;
+    }
+  }
+  &.img__responsive {
+    &.img__contain {
+      height: 0;
+      padding-bottom: 100%;
+      img,
+      .placeholder-svg,
+      .embed-wrapper {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        max-height: 100%;
+        max-width: 100%;
+        height: auto;
+        width: auto;
+      }
+      .embed-wrapper {
+        width: 100%;
+      }
+    }
+    &.img__cover {
+      height: 0;
+      padding-bottom: 100%;
+      img,
+      .placeholder-svg,
+      .embed-wrapper {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        max-width: 10000%;
+        min-height: 100%;
+        min-width: 100%;
+        height: auto;
+        width: auto;
+      }
+      .embed-wrapper {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.img__responsive {
+  position: relative;
+  overflow: hidden;
+  img {
+    max-width: 100%;
+  }
+  // overwrite owl css
+  .owl-carousel .owl-item & {
+    img {
+      width: auto
+    }
+  }
+}
+.img__background {
+  height: 0;
+  padding-bottom: 100%;
+  background-position: center;
+  background-size: cover;
+}
+
+/* image */
+.img {
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  figcaption {
+    font-size: 90%;
+    font-style: italic;
+    margin-top: 5px;
+  }
+}
+
+/* embeds */
+.embed {
+  &.left {
+    width: 50%;
+  }
+  &.right {
+    width: 50%;
+  }
+  .embed-wrapper {
+    padding-bottom: 56.25%;
+    height: 0;
+    position: relative;
+    > * {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.img-wrapper {
+  position: relative;
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid $color-border;
+    background: $image-background;
+    margin-right: $gutter * 0.5 * $mobile-space-scale;
+    margin-left: $gutter * 0.5 * $mobile-space-scale;
+    @include mqmin($bp-md) {
+      margin-right: $gutter * 0.5;
+      margin-left: $gutter * 0.5;
+    }
+  }
+  .img-wrapper-image {
+    position: relative;
+    z-index: 1;
+    margin: 1px; // To show border
+    .row__no-gutter & {
+      margin: 0;
+    }
+  }
+}

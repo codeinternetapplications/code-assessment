@@ -1,0 +1,107 @@
+// default vars
+$gutter: 25px !default;
+$gutter-compensation: $gutter * 0.5 * -1 !default;
+$mobile-space-scale: 0.7 !default;
+$row-spacing: $gutter !default;
+
+/*============================================================================
+  # Flexbox defaults - override these in your settings.scss
+==============================================================================*/
+
+// Set the number of columns you want to use on your layout.
+$grid-columns: 12 !default;
+
+// Set the gutter between columns.
+$gutter: 4rem !default;
+
+/*============================================================================
+  # Flexbox scss
+==============================================================================*/
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  margin-top: $row-spacing * $mobile-space-scale;
+  @include mqmin($bp-md) {
+    margin-top: $row-spacing;
+  }
+  &:first-child {
+    margin-top: 0;
+  }
+  // columns with gutters
+  &.col__gutter {
+    margin-right: $gutter-compensation * $mobile-space-scale;
+    margin-left: $gutter-compensation * $mobile-space-scale;
+    @include mqmin($bp-md) {
+      margin-right: $gutter-compensation;
+      margin-left: $gutter-compensation;
+    }
+  }
+  // multi row grid columns
+  &.col__grid {
+    margin-bottom: -$row-spacing * $mobile-space-scale;
+    @include mqmin($bp-md) {
+        margin-bottom: -$row-spacing;
+    }
+    > .col {
+      margin-bottom: $row-spacing * $mobile-space-scale;
+      @include mqmin($bp-md) {
+        margin-bottom: $row-spacing;
+      }
+    }
+  }
+}
+
+.row.row__reverse {
+  flex-direction: row-reverse;
+}
+
+.row-image-fullscreen {
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center center;
+}
+
+.content-block-image{
+  clear:both;
+  .image_column_wrapper{
+    height: 100vh;
+    display:flex;
+    @include mqmax($bp-lg){
+      display:block;
+
+    }
+    .block_image, .video-block{
+      flex-grow:1;
+      flex-basis:0;
+      @include mqmax($bp-lg){
+        width:100%;
+        height:auto;
+      }
+    }
+    @include mqmax($bp-lg){
+      .video-block{
+        display:block !important;
+      }
+    }
+    img{
+      height:auto;
+    }
+  }
+  @include mqmax($bp-lg){
+    .image_column_wrapper{
+      height:auto;
+    }
+  }
+}
+.scrollify {
+  .img img {
+    width: 100%;
+  }
+}
+.row-video-fullscreen {
+  height: 100vh;
+  width: 100%;
+}

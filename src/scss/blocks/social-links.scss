@@ -1,0 +1,32 @@
+.social-links {
+  @extend .list__unstyled;
+  display: inline-block;
+  margin: 15px 0 0;
+  transition: all 0.3s ease-in;
+  &__list-item {
+    display: inline-block;
+    a {
+      display: inline-block;
+      width: 40px;
+      line-height: 48px;
+      transition: all .4s ease;
+      .la {
+        font-size: 24px;
+        line-height: 0;
+        &.la-instagram {
+          background: 0 0 / 100% auto no-repeat url("assets/icon-instagram.svg");
+          display: inline-block;
+          width: 16px;
+          height: 16px;
+          &:before {
+            display: none;
+          }
+        }
+      }
+      &:hover {
+        text-decoration: none;
+        transform: scale(1.1);
+      }
+    }
+  }
+}

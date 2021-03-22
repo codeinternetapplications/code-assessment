@@ -1,0 +1,37 @@
+.payment-icons {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	@extend .list__unstyled;
+	@include mqmax($bp-footer) {
+		margin: 0;
+	}
+	li {
+		display: inline-block;
+		margin: 5px;
+		.pf-belfius {
+			background: url("assets/payment-belfius.png") no-repeat 0 0;
+		}
+		.pf-afterpay {
+			background: url("assets/payment-afterpay.png") no-repeat 0 0;
+		}
+		.pf-kbc {
+			background: url("assets/payment-kbc.png") no-repeat 0 0;
+		}
+		.pf-belfius,
+		.pf-afterpay,
+		.pf-kbc {
+			width: 50px;
+			height: 32px;
+			background-size: 100% auto;
+		}
+	}
+	img {
+		max-width: 50px;
+		height: auto;
+		display: block;
+	}
+	.icon-wrapper {
+		font-size: 2rem;
+	}
+}

@@ -1,0 +1,158 @@
+// default vars
+$section-content-spacing: 30px !default;
+$footer-height: $section-content-spacing * 3 !default;
+$body-background: #fff !default;
+$page-side-spacing: 40px !default;
+$mobile-space-scale: 0.5 !default;
+$section-row-spacing: 30px !default;
+$body-background-accent: #ccc !default;
+$site-center: 1100 !default;
+$body-page-heading-color: #ff0000 !default;
+.page-wrapper {
+  min-width: 320px;
+  &:before {
+    content: "";
+    display: block;
+    height: 56px; // set to mobile header height
+    @include mqmin($bp-md) {
+      height: 78px; // set to header height
+    }
+  }
+}
+.page-padding__left {
+  padding-left: $page-side-spacing * $mobile-space-scale;
+  @include mqmin($bp-md) {
+    padding-left: $page-side-spacing;
+  }
+}
+.page-padding__right {
+  padding-right: $page-side-spacing * $mobile-space-scale;
+  @include mqmin($bp-md) {
+    padding-right: $page-side-spacing;
+  }
+}
+// site padding left and right
+.page-side-spacing {
+  @extend .page-padding__right;
+  @extend .page-padding__left;
+  transition: padding 0.1s ease-in-out;
+  &.page-full {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: none;
+  }
+}
+// The main element
+.page-main {
+  min-width: 320px;
+  min-height: 100px;
+}
+// centered part of a page
+.page-center {
+  margin: 0 auto;
+  position: relative;
+}
+// page rows, the generic title + content wrapper
+.page-row {
+  @extend .clearfix;
+  position: relative;
+  z-index: 1;
+  margin-top: $section-row-spacing * $mobile-space-scale;
+  margin-bottom: $section-row-spacing * $mobile-space-scale;
+  @include mqmin($bp-md) {
+    margin-top: $section-row-spacing;
+    margin-bottom: $section-row-spacing;
+  }
+  &.page-row__block {
+    margin: 0;
+  }
+  &.page-full {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  &.page-row__white,
+  &.page-row__accent,
+  &.page-row__accent2 {
+    background: #ffffff;
+    padding-top: $section-row-spacing * $mobile-space-scale;
+    padding-bottom: $section-row-spacing * $mobile-space-scale;
+    @include mqmin($bp-md) {
+      padding-top: $section-row-spacing;
+      padding-bottom: $section-row-spacing;
+    }
+  }
+  &.page-row__accent {
+    background: $header-background;
+  }
+  &.page-row__accent2 {
+    background: #e8e8e8;
+  }
+}
+.page-row.page-row__block:last-child,
+.page-row.page-row__accent:last-child {
+  margin-bottom: 0;
+}
+.shopify-section:last-child {
+  .page-row.page-row__block,
+  .page-row.page-row__accent {
+    margin-bottom: 0;
+  }
+}
+// page-row-wrapper header and content
+.page-row-header,
+.page-row-content {
+  @extend .page-center;
+  @extend .page-side-spacing;
+  .page-wide > & {
+    max-width: 100%;
+  }
+  .page-full > & {
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+// page-row-wrapper heading (h1 / h2)
+.page-row-heading {
+  font-family: $body-heading-fontfamily;
+}
+// page-row-wrapper content
+.page-row-content {
+  margin-top: $section-content-spacing * $mobile-space-scale;
+  @include mqmin($bp-md) {
+    margin-top: $section-content-spacing;
+    max-width: $site-center;
+  }
+  &.hidden-title,
+  &:first-child {
+    margin-top: 0;
+  }
+  a {
+    text-decoration: none;
+  }
+}
+.generic-page-wrapper {
+  a {
+    text-decoration: none;
+    font-family: $body-heading-fontfamily;
+    &:hover {
+      text-decoration: none;
+      color: $color-funnel;
+    }
+    &.link-arrow,
+    &.link-arrow__back {
+      max-width: 200px;
+      margin: 60px auto 0;
+    }
+  }
+}
+.page-jobs-detail {
+  h1 {
+    @extend h2;
+    text-align: left;
+  }
+  .back-link {
+    margin-top: 4rem;
+    padding: 0;
+  }
+}

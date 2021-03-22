@@ -1,0 +1,27 @@
+.index-template {
+  .unscrolled {
+    .logo-veloretti,
+    .icon-icon-menu {
+      g,
+      path {
+        transition: all .3s ease-in-out;
+        stroke: transparent;
+        fill: #ffffff;
+      }
+    }
+    .icon-cart,
+    .icon-user {
+      g,
+      path {
+        transition: all .3s ease-in-out;
+        stroke: #ffffff;
+      }
+    }
+  }
+  .page-wrapper:before {
+    height: 0;
+    @include mqmin($bp-md) {
+      height: 0;
+    }
+  }
+}

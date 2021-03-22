@@ -1,0 +1,152 @@
+// max width of page center
+$site-center: 1280px;
+$site-center-narrow: 720px;
+
+// Set spacing for the site left and right sides
+$site-side-spacing: 16px;
+$site-side-spacing-md: 32px;
+
+// Set spacing for the container sides.
+$page-side-spacing: 40px;
+
+// Vertical spacing between sections
+$section-row-spacing: 60px;
+$section-content-spacing: 30px;
+
+// Vertical spacing between containers
+$container-spacing: 16px;
+$container-spacing-md: 64px;
+
+// Vertical spacing between container-rows inside containers
+$container-row-spacing: 16px;
+$container-row-spacing-md: 32px;
+
+// Gutter between columns.
+$gutter: 16px;
+$gutter-md: 24px;
+$gutter-compensation: $gutter * -0.5;
+
+// Gutter between column rows.
+$row-spacing: $gutter;
+
+// all gutters and spacings are made smaller on mobile:
+$mobile-space-scale: 0.4;
+
+// Number of columns you want to use on your layout 12 / 16.
+$grid-columns: 12;
+
+// Breakpoints
+$bp-xs: 320px;
+$bp-sm: 410px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+$bp-xl: 1280px;
+$bp-xxl: 1600px;
+$bp-xxxl: 2200px;
+
+$bp-header: $bp-md;
+$bp-footer: $bp-lg;
+
+// Responsive breakpoints for columns
+$breakpoints:
+  xs $bp-xs,
+  sm $bp-sm,
+  md $bp-md,
+  lg $bp-lg,
+  xl $bp-xl;
+
+//*================ Color Variables ================*/
+// Design colors
+$color-primary: #005566;
+$color-primary-text: #000000;
+$color-secondary: #ff6600;
+$color-secondary-text: #1A3154;
+$color-funnel: #ED7044;
+$color-funnel-text: #ffffff;
+$main-background: #ffffff;
+$color-button: #fff27d;
+
+//*================ Borders ================*/
+$color-lines: #eeeeee;
+$color-border: #D8D8D8;
+
+//*================ Social ================*/
+$color-facebook:    #3b5998;
+$color-twitter:     #1da1f2;
+$color-pinterest:   #bd081c;
+$color-google:      #db4538;
+
+//*================ Alerts ================*/
+$color-error: red;
+$color-error-text: #ffffff;
+$color-success: green;
+$color-success-text: #ffffff;
+
+//*================ Body ================*/
+$body-background: #ffffff;
+$body-background-accent: #E9E2DF;
+
+$body-text-color: $color-primary-text;
+$body-text-color-light: mix( $body-text-color, #ffffff, 50% );
+$body-link-color: $color-primary-text;
+
+$body-page-heading-color: $body-text-color; // h1
+$body-heading-color: $body-text-color;  // h2
+
+//*================ Header ================*/
+$header-background: #E9E2DF;
+$header-link-color: #000000;
+$header-text-color: #000000;
+$haeder-blog-color: #E9E2DF;
+
+//*================ Footer ================*/
+$footer-background: #1A3154;
+$footer-link-color: #ffffff;
+$footer-text-color: #ffffff;
+
+//*================ Form dimensions ================*/
+$form-element-height: 2.4em;
+$form-field-spacing: 2em;
+$form-checkbox-lineheight : 3em; // Lineheight for a vertical list of radio/checkboxes
+
+//*================ Buttons ================*/
+$button-background: #ffffff;
+$button-text: #000000;
+$button-background__hover: mix( $button-background, #ffffff, 90% );
+
+$button-primary-background: $color-primary;
+$button-primary-text: $color-primary-text;
+$button-primary-hover-background: mix( $button-primary-background, #ffffff, 90% );
+
+$button-secondary-background: $color-secondary;
+$button-secondary-text: $color-secondary-text;
+$button-secondary-hover-background: mix( $button-secondary-background, #ffffff, 90% );
+
+$button-funnel-background: $color-funnel;
+$button-funnel-text: $color-funnel-text;
+$button-funnel-hover-background: mix( $button-funnel-background, #ffffff, 90% );
+
+//*================ images ================*/
+$image-background: $body-background-accent;
+$link-background: $body-background-accent;
+
+//*================ table ================*/
+$table-background__accent: $body-background-accent;
+
+//*================ Fonts ================*/
+$body-fontfamily: "BrownStd-Regular";
+$body-fontfamily-secondary: "NotoSerif-Regular";
+$body-fontweight: 400;
+$body-fontstyle: "normal";
+$body-fontsize: 1rem; // Use rem/em for WCAG compliance: 1rem = 16px
+$body-line-height: 1.4em; //use em to make it relative to the elements font-size
+$body-element-spacing: 1.4rem; // Vertical spacing between common text elements (p, ul, table)
+
+$body-heading-fontfamily: "BrownStd-Bold";
+$body-heading-fontweight: 700;
+$body-heading-fontstyle: "normal";
+
+$nav-fontfamily: "BrownStd-Bold";
+$nav-fontweight: 700;
+$nav-fontstyle: "normal";
+$nav-fontsize: 1rem;

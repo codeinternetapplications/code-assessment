@@ -1,0 +1,195 @@
+.footer {
+  background-color: $footer-background;
+  z-index: 9;
+  border-top: 1px solid rgba(110, 111, 95, 0.1);
+  color: $footer-text-color;
+  font-size: 16px;
+  h2, h3, h4, h5, h6 {
+    color: inherit;
+  }
+  h3 {
+    font-size: 1.2em;
+    margin: 0 0 10px;
+  }
+  a {
+    color: $footer-link-color;
+    text-decoration: none;
+    &:focus,
+    &:active,
+    &:hover {
+      opacity: 0.7;
+      color: $footer-link-color;
+      text-decoration: none;
+    }
+  }
+  .fill {
+    fill: $footer-link-color;
+  }
+}
+.footer-row {
+  @include mqmin($bp-lg) {
+    max-width: $site-center;
+    margin: 0 auto;
+  }
+}
+.footer-info {
+  p {
+    margin: 0;
+    line-height: 37px;
+  }
+}
+.footer-payment {
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 0px;
+  @include mqmin($bp-footer) {
+    padding-top: 45px;
+  }
+}
+.footer-social {
+  margin-top: 15px;
+  padding: 0;
+  .social-links {
+    padding: 0;
+  }
+  @include mqmin($bp-footer) {
+    float: right;
+    padding: 0;
+    margin-top: 0;
+  }
+  @include mqmin($bp-lg) {
+    margin-right: 65px;
+  }
+}
+.footer-copyright-text {
+  border-top: 1px solid rgba($footer-text-color, 0.2);
+  font-size: 14px;
+  padding: 15px 0;
+  text-align: center;
+  margin-top: 0 20px;
+  @include mqmin($bp-xl) {
+    font-size: 16px;
+    margin: 30px auto 0;
+  }
+}
+.footer-bottom {
+  text-align: center;
+  height: 26px;
+  &.footer-row {
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+  small {
+    font-size: 10px;
+  }
+}
+.footer-nav-list {
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+  @include mqmin($bp-footer) {
+    margin: 0;
+  }
+  &.level-1 {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+    max-width: 70%;
+    @include mqmax($bp-footer) {
+      min-width: 100%;
+      margin-bottom: 20px;
+    }
+    .footer-nav-list-item.level-1 {
+      flex-grow: 1;
+      flex-basis: auto;
+      max-width: 100%;
+      padding: 0;
+      @include mqmin($bp-md) {
+        min-width: 33%;
+        max-width: 33%;
+        position: relative;
+      }
+      &.collapsible-open {
+        .footer-nav-list.level-2 {
+          max-height: 300px;
+        }
+      }
+    }
+    .footer-nav-list-item.level-2 {
+      padding: 0 0 10px;
+      @include mqmin($bp-footer) {
+        padding: 0 0 5px;
+      }
+    }
+    .footer-nav-link.level-2 {
+      line-height: 24px;
+      @include mqmin($bp-footer) {
+        line-height: 32px;
+      }
+    }
+    .footer-nav-link.level-1 {
+      text-decoration: none;
+      font-size: 1.2em;
+      margin: 0 0 10px;
+      font-weight: 700;
+      .footer-nav-link-trigger {
+        position: absolute;
+        right: 10px;
+        top: 12px;
+        width: 30px;
+        height: 30px;
+        &:before,
+        &:after {
+          content: "";
+          position: absolute;
+          transform: translateY(-50%);
+          background-color: #000000;
+          transition: transform 0.25s ease-out;
+        }
+        &:before {
+          top: 50%;
+          right: 12px;
+          width: 2px;
+          height: 6px;
+        }
+        &:after {
+          top: 50%;
+          right: 10px;
+          width: 6px;
+          height: 2px;
+        }
+        .fa.fa-angle-down {
+          display: none;
+        }
+        @include mqmin($bp-footer) {
+          display: none;
+        }
+      }
+    }
+  }
+  [data-collapsible-trigger] {
+    @include mqmin($bp-footer) {
+      cursor: default;
+    }
+  }
+  &[data-collapsible-target] {
+    max-height: 1000px;
+    overflow: visible;
+  }
+  &.level-2 {
+    transition: max-height .3s ease-in-out, padding .3s ease-in-out;
+    padding-right: 10px;
+    @include mqmax($bp-md) {
+      padding-bottom: 5px;
+      li:first-child {
+        padding-top: 10px;
+      }
+    }
+  }
+  &.level-3 {
+    padding-left: 20px;
+  }
+}
