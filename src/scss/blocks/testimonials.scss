@@ -1,0 +1,90 @@
+.testimonials {
+  .slide {
+    .row {
+      min-height: 300px;
+      @include mqmin($bp-md) {
+        flex-flow: nowrap;
+      }
+    }
+  }
+  .slide-content {
+    background: linear-gradient(to left, $body-background-accent 0%, $body-background-accent 60%, $body-background-accent 60%, white 60%, white 100%);
+    position: static;
+    margin: 40px auto 0;
+    @include mqmin($bp-md) {
+      padding: 30px;
+      margin: 0 auto;
+    }
+    .slide-content-pane {
+      background: transparent;
+      border: none;
+      padding: 0;
+      max-width: 100%;
+      position: relative;
+      top: 50%;
+      transform: translate(0, -50%);
+      color: $color-primary-text;
+      p {
+        font-size: 1.2em;
+        font-family: $body-heading-fontfamily;
+        padding-bottom: 40px;
+        line-height: 1.4;
+        @include mqmin($bp-md) {
+          font-size: 1.5em;
+        }
+      }
+    }
+  }
+  h2 {
+    font-family: $body-heading-fontfamily;
+    font-size: 24px;
+    color: $color-secondary-text;
+    line-height: 32px;
+    margin-bottom: 40px;
+    @include mqmin($bp-lg) {
+      font-size: 34px;
+      line-height: 48px;
+    }
+  }
+  .owl-carousel .owl-item .img__responsive img {
+    max-width: 200px;
+  }
+  .owl-nav {
+    position: absolute;
+    left: 50%;
+    bottom: -48px;
+    transform: translateX(-50%);
+    overflow: hidden;
+    opacity: 1;
+    .owl-next,
+    .owl-prev {
+      position: static;
+      display: inline-block;
+      border-radius: 50%;
+      border: none;
+      margin: 0;
+      padding: 0;
+      height: 32px;
+      width: 32px;
+      transform: translateY(0);
+      background: url("assets/nav_arrow.svg") no-repeat center center $body-background-accent;
+      @include mqmin($bp-lg) {
+        height: 48px;
+        width: 48px;
+      }
+      &:before {
+        display: none;
+      }
+      &:hover {
+        background: url("assets/nav_arrow.svg") no-repeat center center $body-background-accent;
+      }
+    }
+    .owl-prev {
+      margin-right: 16px;
+      transform: rotate(180deg);
+      @include mqmin($bp-lg) {
+        margin-right: 8px;
+      }
+    }
+  }
+}

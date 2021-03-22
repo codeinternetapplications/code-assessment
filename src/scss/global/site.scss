@@ -1,0 +1,57 @@
+// Most outer site wrapper
+.site {
+  // Create a sticky footer
+  min-height: 100vh;
+  display: flex;
+  flex: 0 1 auto;
+  flex-direction: column;
+  // The main site element
+  &__main {
+    min-width: 360px;
+    width: 100%;
+    // Sticky footer
+    flex-grow: 1;
+  }
+}
+
+
+// Centered part of the site
+.site-center {
+  box-sizing: border-box;
+  max-width: $site-center;
+  margin: 0 auto;
+  position: relative;
+  &.site-center--narrow {
+    max-width: $site-center-narrow;
+  }
+  &.site-center--wide {
+    max-width: none;
+  }
+}
+
+// Helper class for left spacing
+.site-padding-left {
+  padding-left: $site-side-spacing;
+  @include mqmin($bp-md) {
+    padding-left: $site-side-spacing-md;
+  }
+}
+
+// Helper class for right spacing
+.site-padding-right {
+  padding-right: $site-side-spacing;
+  @include mqmin($bp-md) {
+    padding-right: $site-side-spacing-md;
+  }
+}
+
+// Helper class for left and right spacing
+.site-side-spacing {
+  @extend .site-padding-right;
+  @extend .site-padding-left;
+  transition: padding 0.1s ease-in-out;
+  &.container--full {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

@@ -1,0 +1,281 @@
+// default vars
+$color-border: #ccc !default;
+$image-background: #fff !default;
+$link-background: #fff !default;
+$color-primary: #ff0000 !default;
+$gutter: 25px !default;
+$mobile-space-scale: 0.7 !default;
+$body-background-accent: #eee !default;
+$grid-columns: 12 !default;
+
+/*============================================================================
+  # Flexbox scss
+==============================================================================*/
+@mixin flexboxgrid-sass-col-common {
+  box-sizing: border-box;
+  // split flex: 0 0 auto into individual props
+  flex-grow: 0;
+  flex-shrink: 0;
+  // we leave flex-basis: auto out of common because in some spots we need it and some we dont
+  // more why here: https://github.com/kristoferjoseph/flexboxgrid/issues/126
+}
+
+// create columns with gutter (horizontal spacing) - children must have class .col
+.col__gutter {
+  > .col {
+    padding-right: $gutter * 0.5 * $mobile-space-scale;
+    padding-left: $gutter * 0.5 * $mobile-space-scale;
+    @include mqmin($bp-md) {
+      padding-right: $gutter * 0.5;
+      padding-left: $gutter * 0.5;
+    }
+  }
+  > .col__border:before {
+    margin-right: $gutter * 0.5 * $mobile-space-scale;
+    margin-left: $gutter * 0.5 * $mobile-space-scale;
+    @include mqmin($bp-md) {
+      margin-right: $gutter * 0.5;
+      margin-left: $gutter * 0.5;
+    }
+  }
+}
+
+// create columns with line spacing (vertical spacing)
+// <div class="row col__line-spacing col-md__no-line-spacing"><div class="col col-xs-12 col-md-4">
+.col__line-spacing {
+  margin-bottom: $gutter * -1 * $mobile-space-scale;
+  > .col {
+    margin-bottom: $gutter * $mobile-space-scale;
+  }
+  @include mqmin($bp-md) {
+    margin-bottom: $gutter * -1;
+    > .col {
+      margin-bottom: $gutter;
+    }
+  }
+}
+
+
+// create classes to reset line-spacing per breakpoint
+// <div class="row col-sm__line-spacing col-md__no-line-spacing"><div class="col col-sm-12 col-md-4">
+$val:1;
+@each $breakpoint in $breakpoints {
+
+  $name: nth($breakpoint, 1);
+  $size: nth($breakpoint, 2);
+
+  @if $size == $bp-xs {
+    $val: $mobile-space-scale;
+  } @else if $size == $bp-sm  {
+    $val: $mobile-space-scale;
+  } @else if $size == $bp-md  {
+    $val: $mobile-space-scale;
+  } @else {
+    $val: 1;
+  }
+  @include mqmin($size) {
+    .col-#{$name}__line-spacing {
+      margin-bottom: $gutter * -1 * $val;
+      > .col {
+        margin-bottom: $gutter * $val;
+      }
+    }
+    .col-#{$name}__no-line-spacing {
+      margin-bottom: 0 * $val;
+      > .col {
+        margin-bottom: 0 * $val;
+      }
+    }
+  }
+}
+
+// columns with border
+// <div class="row"><div class="col col-xs-12 col__border">
+.col__border {
+  position: relative;
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid $color-border;
+    background: $link-background;
+    z-index: -1;
+  }
+}
+
+// columns with accent background
+// <div class="row"><div class="col col-xs-12 col__accent">
+.col__accent {
+  position: relative;
+  padding-top: $gutter;
+  padding-bottom: $gutter;
+  &:before {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: "";
+    background: $body-background-accent;
+    margin-right: $gutter * 0.5 * $mobile-space-scale;
+    margin-left: $gutter * 0.5 * $mobile-space-scale;
+    @include mqmin($bp-md) {
+      margin-right: $gutter * 0.5;
+      margin-left: $gutter * 0.5;
+    }
+    .page-section-accent & {
+      background: #ffffff;
+    }
+  }
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+$name: xs;
+.col-#{$name} {
+  @include flexboxgrid-sass-col-common;
+  flex-basis: auto;
+}
+@for $i from 1 through $grid-columns {
+  .col-#{$name}-#{$i} {
+    @include flexboxgrid-sass-col-common;
+    flex-basis: 100% / $grid-columns * $i;
+    max-width: 100% / $grid-columns * $i;
+  }
+}
+@for $i from 0 through $grid-columns {
+  .col-#{$name}-offset-#{$i} {
+    @include flexboxgrid-sass-col-common;
+    @if $i == 0 {
+      margin-left: 0;
+    } @else {
+      margin-left: 100% / $grid-columns * $i;
+    }
+  }
+}
+.col-#{$name} {
+  flex-grow: 1;
+  flex-basis: 0;
+  max-width: 100%;
+}
+.col-#{$name}__start {
+  justify-content: flex-start;
+  text-align: start;
+}
+.col-#{$name}__center {
+  justify-content: center;
+  text-align: center;
+}
+.col-#{$name}__end {
+  justify-content: flex-end;
+  text-align: end;
+}
+.col-#{$name}__top {
+  align-items: flex-start;
+}
+.col-#{$name}__middle {
+  align-items: center;
+}
+.col-#{$name}__bottom {
+  align-items: flex-end;
+}
+.col-#{$name}__around {
+  justify-content: space-around;
+}
+.col-#{$name}__between {
+  justify-content: space-between;
+}
+.col-#{$name}__first {
+  order: -1;
+}
+.col-#{$name}__last {
+  order: 1;
+}
+.col-#{$name}__hidden {
+  display: none;
+}
+.col-#{$name}__visible {
+  display: block;
+}
+
+@each $breakpoint in $breakpoints {
+  $name: nth($breakpoint, 1);
+  $size: nth($breakpoint, 2);
+
+  // skip "xs" as it is already the default styling
+  @if $name != "xs" {
+    @media (min-width: $size) {
+      .col-#{$name} {
+        @include flexboxgrid-sass-col-common;
+        flex-basis: auto;
+      }
+      @for $i from 1 through $grid-columns {
+        .col-#{$name}-#{$i} {
+          @include flexboxgrid-sass-col-common;
+          flex-basis: 100% / $grid-columns * $i;
+          max-width: 100% / $grid-columns * $i;
+        }
+      }
+      @for $i from 0 through $grid-columns {
+        .col-#{$name}-offset-#{$i} {
+          @include flexboxgrid-sass-col-common;
+          @if $i == 0 {
+            margin-left: 0;
+          } @else {
+            margin-left: 100% / $grid-columns * $i;
+          }
+        }
+      }
+      .col-#{$name} {
+        flex-grow: 1;
+        flex-basis: 0;
+        max-width: 100%;
+      }
+      .col-#{$name}__start {
+        justify-content: flex-start;
+        text-align: start;
+      }
+      .col-#{$name}__center {
+        justify-content: center;
+        text-align: center;
+      }
+      .col-#{$name}__end {
+        justify-content: flex-end;
+        text-align: end;
+      }
+      .col-#{$name}__top {
+        align-items: flex-start;
+      }
+      .col-#{$name}__middle {
+        align-items: center;
+      }
+      .col-#{$name}__bottom {
+        align-items: flex-end;
+      }
+      .col-#{$name}__around {
+        justify-content: space-around;
+      }
+      .col-#{$name}__between {
+        justify-content: space-between;
+      }
+      .col-#{$name}__first {
+        order: -1;
+      }
+      .col-#{$name}__last {
+        order: 1;
+      }
+      .col-#{$name}__hidden {
+        display: none;
+      }
+      .col-#{$name}__visible {
+        display: block;
+      }
+    }
+  }
+}
