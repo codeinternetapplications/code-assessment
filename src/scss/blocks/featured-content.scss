@@ -1,0 +1,39 @@
+.featured-content {
+  // Override to make it full width on mobile
+  .container {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  // Override to make it full width on mobile
+  .container-content {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  // Override
+  .row {
+    @include mqmin($bp-md) {
+      flex-direction: row-reverse;
+    }
+  }
+}
+
+.featured-content__text {
+  border-bottom: 1px solid $color-primary;
+
+  @include mqmin($bp-md) {
+    border: none;
+  }
+
+  // Override
+  &.col {
+    padding: 32px;
+  }
+}
+
+.featured-content__text-wrapper {
+  position: relative;
+  transform: translate(0, -50%);
+  top: 50%;
+}
