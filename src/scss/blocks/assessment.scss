@@ -1,0 +1,40 @@
+.assessment {
+  position: relative;
+  display: block;
+  font-size: 1rem;
+  line-height: 1.4;
+
+  .content-row {
+    .col {
+      margin: 0;
+
+      &.assessment-text {
+        background: #fff;
+
+        .assessment-content {
+          padding: 2.5rem;
+          @include mqmin($bp-md) {
+            padding: 3.5rem;
+            transform: translate(0,-50%);
+            position: absolute;
+            top: 50%;
+            color: inherit;
+          }
+        }
+
+      }
+      @include mqmin($bp-md) {
+        padding-right: 0;
+        padding-left: 0;
+      }
+    }
+    @include mqmin($bp-md) {
+      -webkit-flex-direction: row-reverse;
+      flex-direction: row-reverse;
+    }
+  }
+  @include mqmin($bp-md) {
+    font-size: 1.2rem;
+    line-height: 1.6;
+  }
+}
