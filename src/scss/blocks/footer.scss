@@ -112,9 +112,21 @@
         max-width: 33%;
         position: relative;
       }
-      &.collapsible-open {
+      @include mqmax($bp-md) {
+        width: 100%;
+        padding-bottom: 20px;
+        .footer-nav-link.level-1 {
+          cursor: pointer;
+        }
         .footer-nav-list.level-2 {
+          transition: all 1s ease;
+          opacity: 0;
+          max-height: 0;
+          overflow-y: hidden;
+        }
+        &.collapsible-open .footer-nav-list.level-2 {
           max-height: 300px;
+          opacity: 1;
         }
       }
     }

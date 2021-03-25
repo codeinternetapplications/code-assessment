@@ -797,6 +797,16 @@
                 </li>
               </ol>
             </li>
+            <script>
+              const collapseTrigger = Array.from(document.querySelectorAll('li.footer-nav-list-item.level-1 .footer-nav-link.level-1'));
+              for(const elem of collapseTrigger) {
+                elem.addEventListener('click', () => {
+                  if (window.matchMedia("(max-width: 767px)").matches) {
+                    elem.parentNode.classList.toggle('collapsible-open');
+                  }
+                }, false);
+              }
+            </script>
           </ol>
 
           <div class="footer-info">
