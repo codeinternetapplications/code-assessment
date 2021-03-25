@@ -9,6 +9,16 @@
       @include mqmin($bp-md) {
         max-width: 33%;
       }
+      h1 {
+        font-size: 24px;
+        line-height: 32px;
+        margin-bottom: 1rem;
+        @include mqmin($bp-lg) {
+          font-size: 40px;
+          line-height: 48px;
+          margin-bottom: 1.5rem;
+        }
+      }
     }
     @include mqmin($bp-md) {
       background: transparent;

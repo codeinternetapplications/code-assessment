@@ -211,7 +211,7 @@
             <div class="content-wrapper">
               <div class="container-content">
                 <div class="content">
-                  <h2>Company bikes</h2>
+                  <h1>Company bikes</h1>
                   <p>A company that rides together, stays together. Wij helpen je bedrijf in beweging te krijgen.</p>
                   <p>
                     <a href="https://www.veloretti.com/pages/company-bikes" class="link-arrow">Lees meer</a>
@@ -405,33 +405,33 @@
           <div class="container-content">
 
             <div class="row content-row col__gutter col__line-spacing col-md__between">
-              <div class="col col-xs-6 col-lg-3 service">
+              <div class="col col-sm-12 col-md-6 col-lg-3 service">
+                <h4>Spotless service</h4>
+                <p>We always aim to provide the best service. Until you’ll ask us about cars, that might be a problem.</p>
                 <figure>
                   <img src="./assets/icon_usp_spotless.png" alt="">
                 </figure>
-                <h4>Spotless service</h4>
-                <p>We always aim to provide the best service. Until you’ll ask us about cars, that might be a problem.</p>
               </div>
-              <div class="col col-xs-6 col-lg-3 service">
+              <div class="col col-sm-12 col-md-6 col-lg-3 service">
+                <h4>Smart pricing</h4>
+                <p>Our bicycles are affordable without compromising on looks and quality.</p>
                 <figure>
                   <img src="./assets/icon_usp_smartpricing.png" alt="">
                 </figure>
-                <h4>Smart pricing</h4>
-                <p>Our bicycles are affordable without compromising on looks and quality.</p>
               </div>
-              <div class="col col-xs-6 col-lg-3 service">
+              <div class="col col-sm-12 col-md-6 col-lg-3 service">
+                <h4>Made by hand</h4>
+                <p>Our bicycles are carefully handcrafted in Europe with a strong focus on quality and durability.</p>
                 <figure>
                   <img src="./assets/icon_usp_madebyhand.png" alt="">
                 </figure>
-                <h4>Made by hand</h4>
-                <p>Our bicycles are carefully handcrafted in Europe with a strong focus on quality and durability.</p>
               </div>
-              <div class="col col-xs-6 col-lg-3 service">
+              <div class="col col-sm-12 col-md-6 col-lg-3 service">
+                <h4>EU shipping</h4>
+                <p>We ship straight to your front door wherever you live in Europe. Due to COVID-19 it takes us 10 working days, when in stock.</p>
                 <figure>
                   <img src="./assets/icon_usp_eushipping.png" alt="">
                 </figure>
-                <h4>EU shipping</h4>
-                <p>We ship straight to your front door wherever you live in Europe. Due to COVID-19 it takes us 10 working days, when in stock.</p>
               </div>
             </div>
 
@@ -472,6 +472,35 @@
                     <img src="./assets/CF220406_600x.jpg" alt="">
                   </picture>
                 </figure>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="shopify-section assessment">
+        <div class="container container--accent">
+          <div class="container-content">
+
+            <div class="row content-row col__gutter col__line-spacing col-md__between">
+              <div class="col col-sm-12 col-md-6">
+                <figure class="img img__responsive img__square">
+                  <picture>
+                    <source media="(max-width: 319px)" srcset="https://cdn.shopify.com/s/files/1/2396/4515/files/shopify-table-decor_320x320_crop_center.jpg">
+                    <source media="(max-width: 424px)" srcset="https://cdn.shopify.com/s/files/1/2396/4515/files/shopify-table-decor_420x420_crop_center.jpg">
+                    <source media="(max-width: 767px)" srcset="https://cdn.shopify.com/s/files/1/2396/4515/files/shopify-table-decor_700x700_crop_center.jpg">
+                    <source media="(max-width: 1020px)" srcset="https://cdn.shopify.com/s/files/1/2396/4515/files/shopify-table-decor_500x500_crop_center.jpg">
+                    <source media="print" srcset="https://cdn.shopify.com/s/files/1/2396/4515/files/shopify-table-decor_1000x500_crop_center.jpg">
+                    <img src="https://cdn.shopify.com/s/files/1/2396/4515/files/shopify-table-decor_800x500_crop_center.jpg" alt="test" style="opacity: 1;">
+                  </picture>
+                </figure>
+              </div>
+              <div class="col col-sm-12 col-md-6 assessment-text">
+                <div class="assessment-content">
+                  <h2>De Veloretti Fiets</h2>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum scelerisque arcu ut accumsan volutpat. Nam et ex tempor sem rhoncus tempus in ut libero.</p>
+                </div>
               </div>
             </div>
 
@@ -768,6 +797,16 @@
                 </li>
               </ol>
             </li>
+            <script>
+              const collapseTrigger = Array.from(document.querySelectorAll('li.footer-nav-list-item.level-1 .footer-nav-link.level-1'));
+              for(const elem of collapseTrigger) {
+                elem.addEventListener('click', () => {
+                  if (window.matchMedia("(max-width: 767px)").matches) {
+                    elem.parentNode.classList.toggle('collapsible-open');
+                  }
+                }, false);
+              }
+            </script>
           </ol>
 
           <div class="footer-info">
