@@ -117,6 +117,11 @@
           max-height: 300px;
         }
       }
+      &.collapsible-closed {
+        .footer-nav-list.level-2 {
+          display: none;
+        }
+      }
     }
     .footer-nav-list-item.level-2 {
       padding: 0 0 10px;

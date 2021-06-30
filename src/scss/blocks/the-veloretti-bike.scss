@@ -1,0 +1,30 @@
+.the-veloretti-bike {
+    .text {
+        padding: $section-row-spacing / 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      figure {
+          height: 100%;
+          
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+      }
+}
+
+@include mqmin($bp-lg){
+    .the-veloretti-bike {
+        .row {
+            flex-direction: row-reverse;
+
+            .text {
+                padding: $section-row-spacing * 2 $section-row-spacing;
+            }
+        }
+    }
+}

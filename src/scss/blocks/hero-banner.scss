@@ -23,6 +23,7 @@
     }
   }
   .image {
+    padding-top: 100px;
     min-height: 356px;
     position: relative;
     @include mqmin($bp-lg) {
