@@ -342,19 +342,19 @@ body.header-nav__is-open {
 }
 /* Transition effect to show one list item after each other */
 @for $i from 1 through 10 {
-  .header-navigation__primary > ol > li:nth-child(#{$i}) .header-nav-link,
-  .header-navigation__extra > ol > li:nth-child(#{$i}) .header-nav-link {
+  .header-nav__is-open .header-navigation__primary > ol > li:nth-child(#{$i}) .header-nav-link,
+  .header-nav__is-open .header-navigation__extra > ol > li:nth-child(#{$i}) .header-nav-link {
     transition-delay: ($i * .2s + 0.3s);
   }
 }
 @include mqmin($bp-header) {
   @for $i from 1 through 10 {
-    .header-navigation__primary > ol > li:nth-child(#{$i}) .header-nav-link {
+    .header-nav__is-open .header-navigation__primary > ol > li:nth-child(#{$i}) .header-nav-link {
       transition-delay: ($i * .2s + 0.3s);
     }
   }
   @for $i from 1 through 10 {
-    .header-navigation__extra > ol > li:nth-child(#{$i}) .header-nav-link {
+    .header-nav__is-open .header-navigation__extra > ol > li:nth-child(#{$i}) .header-nav-link {
       transition-delay: ($i * .2s + 0.3s);
     }
   }

@@ -18,6 +18,8 @@
   box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.05);
   transition: all 0.2s ease-in-out;
   margin: 0;
+  min-width: 48px;
+  min-height: 48px;
   &:active,
   &:focus,
   &:hover {
