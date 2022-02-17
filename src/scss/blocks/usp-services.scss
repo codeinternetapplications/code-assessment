@@ -1,3 +1,12 @@
+@mixin services {
+  text-align: center;
+  margin: 0;
+  padding: 10px;
+  figure {
+    max-height: 60px;
+  }
+}
+
 .usp-services {
   position: relative;
   display: block;
@@ -8,15 +17,17 @@
     line-height: 1.6;
   }
   .service {
-    text-align: center;
-    margin: 0;
-    figure {
-      max-height: 60px;
+    @include services;
+
+    &--img-reverse {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      
+      figure {
+        order: 1;
+        margin-top: 1.33rem;
+      }
     }
-  }
-}
-.usp-services {
-  .service {
-    padding: 10px;
   }
 }
