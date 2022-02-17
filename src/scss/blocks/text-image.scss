@@ -1,0 +1,23 @@
+.text-image {
+  .wrapper-container {
+    display: flex;
+
+    .text-section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: left;
+      padding: 2.5rem;
+
+      @include mqmax($bp-md) {
+        order: 2;
+      }
+    }
+
+    .image-section {
+      @include mqmax($bp-md) {
+        order: 1;
+      }
+    }
+  }
+}
