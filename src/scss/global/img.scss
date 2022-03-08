@@ -56,6 +56,10 @@ $mobile-space-scale: 0.7 !default;
   &.img__right__large {
     @include mqmin($bp-md) {
       float: right;
+      max-height: 100%;
+      max-width: 100%;
+      height: auto;
+      width: auto;
     }
   }
   &.img__responsive {
