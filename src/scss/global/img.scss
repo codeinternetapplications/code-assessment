@@ -53,6 +53,11 @@ $mobile-space-scale: 0.7 !default;
       background: $image-background;
     }
   }
+  &.img__right__large {
+    @include mqmin($bp-md) {
+      float: right;
+    }
+  }
   &.img__responsive {
     &.img__contain {
       height: 0;
@@ -97,6 +102,21 @@ $mobile-space-scale: 0.7 !default;
 }
 
 .img__responsive {
+  position: relative;
+  overflow: hidden;
+  img {
+    max-width: 100%;
+  }
+  // overwrite owl css
+  .owl-carousel .owl-item & {
+    img {
+      width: auto
+    }
+  }
+}
+
+.img__responsive_right {
+  float: right;
   position: relative;
   overflow: hidden;
   img {

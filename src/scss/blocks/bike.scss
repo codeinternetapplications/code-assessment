@@ -1,0 +1,15 @@
+.bike {
+    position: relative;
+    // display: block;
+    display: inline-block;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    @include mqmin($bp-md) {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+.bikes {
+    text-align: center;
+    margin: 0;
+  }
+}
