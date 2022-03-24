@@ -4957,3 +4957,23 @@ $.code.localStorageTest = function () {
  * Initialize CODE JS
  */
 $.code.init();
+
+const footerHeadingList = document.querySelectorAll(".footer-nav-list-item.level-1");
+
+
+if (window.innerWidth < 768) {
+  for (let i = 0; i < footerHeadingList.length; i++) {
+    const footerHeading = footerHeadingList[i].querySelector('.footer-nav-link.level-1');
+    console.log(footerHeading.length);
+
+    footerHeading.addEventListener("click", function() {
+      this.classList.toggle("active");
+      var content = this.nextElementSibling;
+      if (content.style.display === "block") {
+        content.style.display = "none";
+      } else {
+        content.style.display = "block";
+      }
+    });
+  }
+}
