@@ -4877,8 +4877,12 @@ $.code.init = function () {
 
     if (scroll >= 1) {
       header.removeClass('unscrolled').addClass('scrolled');
+
+      const headerHeight = header.height();
+      document.getElementById('main-content').style.paddingTop = (headerHeight + 10) + 'px';
     } else {
       header.removeClass('scrolled').addClass('unscrolled');
+      document.getElementById('main-content').style.paddingTop = 0;
     }
   });
 
