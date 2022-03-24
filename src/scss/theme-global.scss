@@ -50,3 +50,11 @@
 @import "blocks/social-links.scss";
 @import "blocks/testimonials.scss";
 @import "blocks/usp-services.scss";
+
+ /* CUSTOM MEDIA QUERIES CSS */
+@media screen and (max-width: 767px){
+    .usp-services .col{
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+}
