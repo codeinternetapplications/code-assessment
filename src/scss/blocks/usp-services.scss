@@ -20,3 +20,10 @@
     padding: 10px;
   }
 }
+
+@media screen and (max-width: 767px){
+    .usp-services .col{
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+}
