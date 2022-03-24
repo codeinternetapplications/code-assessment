@@ -10,8 +10,16 @@
   .service {
     text-align: center;
     margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+
     figure {
       max-height: 60px;
+      order: 3;
+      flex-basis: 100%;
+    }
+    h4{
+      flex-basis: 100%;
     }
   }
 }
