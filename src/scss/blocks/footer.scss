@@ -88,6 +88,9 @@
   padding: 0;
   list-style: none;
   text-align: left;
+  @media (max-width: 768px) {
+    display: none;
+  }
   @include mqmin($bp-footer) {
     margin: 0;
   }
@@ -192,4 +195,8 @@
   &.level-3 {
     padding-left: 20px;
   }
+}
+
+.visible {
+  display: block;
 }
