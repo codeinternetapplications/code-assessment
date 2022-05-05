@@ -1,0 +1,20 @@
+.about-company {
+  display: flex;
+
+  @media (max-width: 768px) {
+    flex-direction: column-reverse;
+  }
+}
+
+.column {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+
+.col-text {
+  @media (max-width: 768px) {
+    padding: 40px;
+  }
+}
