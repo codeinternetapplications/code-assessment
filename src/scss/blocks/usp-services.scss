@@ -17,6 +17,8 @@
 }
 .usp-services {
   .service {
+    display: flex;
+    flex-direction: column-reverse;
     padding: 10px;
 
     @media (max-width: 768px) {
