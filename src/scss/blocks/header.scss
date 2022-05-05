@@ -243,8 +243,8 @@
       line-height: 50px;
       padding: 5px 10px;
       display: inline-block;
-      opacity: 0;
-      transform: translateY(-130%);
+      // opacity: 0;
+      // transform: translateY(-130%);
       @include mqmin($bp-sm) {
         font-size: 48px;
         line-height: 68px;
