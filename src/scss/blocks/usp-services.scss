@@ -18,5 +18,9 @@
 .usp-services {
   .service {
     padding: 10px;
+
+    @media (max-width: 768px) {
+      min-width: 100%;
+    }
   }
 }
