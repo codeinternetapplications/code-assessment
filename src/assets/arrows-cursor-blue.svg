@@ -1,9 +1,0 @@
-<svg id="Icon_Swipe_Hover" data-name="Icon / Swipe Hover" xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 72 72">
-  <g id="Oval" fill="none" stroke="#1C3154" stroke-miterlimit="10" stroke-width="2">
-    <circle cx="36" cy="36" r="36" stroke="none"/>
-    <circle cx="36" cy="36" r="35" fill="none"/>
-  </g>
-  <path id="Path_4" data-name="Path 4" d="M0,0-4,3.994,0,8" transform="translate(52 40) rotate(-180)" fill="none" stroke="#1C3154" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
-  <path id="Path_4-2" data-name="Path 4" d="M0,0,4,3.994,0,8" transform="translate(20 40) rotate(-180)" fill="none" stroke="#1C3154" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
-  <rect id="Rectangle" width="38" height="2" transform="translate(17 35)" fill="#1C3154"/>
-</svg>
