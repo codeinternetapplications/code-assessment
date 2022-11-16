@@ -18,6 +18,7 @@ main.sync
 *.log
 
 # Package files
+package-lock.json
 *.jar
 
 # Maven
