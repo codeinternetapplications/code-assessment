@@ -6,9 +6,6 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 
 const mode = process.env.NODE_ENV === 'development' ? 'development' : 'production';
-const environment = process.env.SHOPIFY_ENV ? process.env.SHOPIFY_ENV : 'development';
-const isDev = mode !== 'production';
-const devtool = isDev ? 'eval-cheap-source-map' : false;
 
 // Build up the entrypoints array here
 let entryFiles = [];
@@ -16,7 +13,7 @@ let entryFiles = [];
 glob.sync('./src/*.html').forEach((path) => {
   entryFiles.push(path);
 });
-glob.sync('./src/scss/theme-*.scss').forEach((path) => {
+glob.sync('./src/scss/**/*.scss').forEach((path) => {
   entryFiles.push(path);
 });
 
@@ -38,7 +35,7 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         { from: 'src/assets', to: 'assets' },
-        { from: 'src/js', to: '' },
+        { from: 'src/js', to: 'js' },
       ],
     }),
   ],
@@ -97,7 +94,7 @@ module.exports = {
           {
 						loader: 'file-loader',
 						options: {
-							name: '[name].css',
+							name: 'css/[name].css',
 						}
 					},
 					{ loader: 'extract-loader' },
