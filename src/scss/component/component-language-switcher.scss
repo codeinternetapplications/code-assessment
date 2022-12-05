@@ -1,0 +1,29 @@
+@use '../mixins'as *;
+
+.language-switcher {
+  &__title {
+    font-size: rem(16);
+    margin-bottom: rem(4);
+  }
+  &__list {
+    gap: rem(16);
+    &-item {
+      position: relative;
+      display: inline-block;
+      * {
+        text-transform: uppercase;
+        color: var(--color-brand-text-light);
+      }
+      a {
+        color: var(--color-brand-text-light);
+        &:hover {
+          text-decoration: none;
+          color: var(--color-brand-primary);
+        }
+      }
+      span {
+        color: var(--color-brand-text);
+      }
+    }
+  }
+}

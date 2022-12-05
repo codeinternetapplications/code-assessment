@@ -1,0 +1,18 @@
+//* Simple media query mixins */
+@mixin mqmin($mq-breakpoint) {
+  @media screen and (min-width: $mq-breakpoint) {
+    @content;
+  }
+}
+
+@mixin mqmax($mq-breakpoint) {
+  @media screen and (max-width: $mq-breakpoint - 1px) {
+    @content;
+  }
+}
+
+@mixin mqminmax($mq-min-breakpoint, $mq-max-breakpoint) {
+  @media screen and (min-width: $mq-min-breakpoint) and (max-width: $mq-max-breakpoint - 1px) {
+    @content;
+  }
+}

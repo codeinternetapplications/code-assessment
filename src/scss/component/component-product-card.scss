@@ -1,0 +1,81 @@
+@use '../mixins' as *;
+
+.product-card {
+  row-gap: rem(8);
+  @include mqmin($bp-md) {
+    row-gap: rem(16);
+  }
+  // Top
+  &__top {
+    position: relative;
+    @include states() {
+      .quickshop {
+          .no-touch & {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+    &:focus-within {
+      .quickshop {
+          .no-touch & {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+  }
+
+  // Image
+  &__image {
+    position: relative;
+    .img {
+      border-radius: var(--border-radius);
+      margin: 0;
+    }
+  }
+  
+
+  // Bottom
+  &__bottom {
+    row-gap: rem(4);
+  }
+
+  // Title
+  &__title {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    @include mqmax($bp-md) {
+      font-size: rem(12);
+      line-height: rem(19);
+    }
+    @include states() {
+      text-decoration: none;
+      color: var(--color-brand-primary);
+    }
+  }
+
+  // Price
+  &__price {
+    @include mqmax($bp-md) {
+      font-size: rem(12);
+      line-height: rem(19);
+    }
+    .price {
+      &__compare,
+      &__regular {
+        color: var(--color-black-50);
+      }
+    }
+  }
+
+  // Swatches
+  .variant-selector {
+    margin-top: rem(4);
+    &__options {
+      justify-content: center;
+    }
+  }
+}

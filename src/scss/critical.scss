@@ -1,0 +1,18 @@
+/* See theme/snippets/html-head-css.liquid for default CSS variables */
+
+/* Import Griddle for grid usage, more information: https://github.com/daveberning/griddle */
+@import 'ext/griddle';
+
+/* Import helper classes, for example to reduce CLS scores */
+@import 'partials';
+
+/* Import sections */
+@import 'section/section-announcement-bar';
+@import 'section/section-header';
+
+/* Import components */
+@import 'component/component-logo';
+@import 'component/component-price';
+@import 'component/component-form';
+@import 'component/component-cart-icon-bubble.scss';
+@import 'component/component-list-menu';

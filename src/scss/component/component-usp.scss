@@ -1,0 +1,68 @@
+@use '../mixins'as *;
+.usp {
+  text-align: center;
+  .container {
+    padding-top: rem(60);
+    padding-bottom: rem(80);
+    @include mqmin($bp-md) {
+      padding-top: rem(80);
+      padding-bottom: rem(100);
+    }
+  }
+  .is-grid {
+    @include mqmax($bp-md) {
+      row-gap: rem(40);
+    }
+    @include mqmin($bp-xl) {
+      padding-inline: var(--site-side-spacing-lg);
+    }
+    @include mqmin($bp-xxl) {
+      padding-inline: var(--site-side-spacing-xxl);
+    }
+  }
+  &__title {
+    margin-bottom: 0;
+    @include mqmax($bp-md) {
+      line-height: rem(26);
+    }
+    @include mqmin($bp-md) {
+      margin-bottom: rem(10);
+    }
+  }
+  &__icon {
+    display: inline-flex;
+    padding: rem(10);
+    margin: 0 auto var(--element-spacing) auto;
+    transform: scale(1);
+    transition: transform var(--duration-default) ease-in-out;
+    @include mqmin($bp-xl) {
+      padding: rem(24);
+      margin-bottom: rem(24);
+    }
+    .icon--lg {
+      height: rem(48); // icon-xl height, to ensure proper alignment with bigger icons
+    }
+  }
+  &__content {
+    @include mqmin($bp-xl) {
+      margin-inline: auto;
+      max-width: 75%;
+    }
+  }
+  &__link {
+    text-decoration: none;
+    transition: all var(--duration-default) ease-in-out;
+    display: block;
+    [fill="currentColor"] {
+      transition: all var(--duration-default) ease-in-out;
+    }
+    &:hover,
+    &:focus,
+    &:active {
+      text-decoration: underline;
+      .usp__icon {
+        transform: scale(1.2);
+      }
+    }
+  }
+}

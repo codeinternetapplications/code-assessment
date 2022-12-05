@@ -1,0 +1,30 @@
+@use '../mixins' as *;
+
+$mq-breakpoints:
+xs $bp-xs,
+sm $bp-sm,
+md $bp-md,
+lg $bp-lg,
+xl $bp-xl,
+xxl $bp-xxl;
+
+.visibility-hidden {
+  display: none;
+}
+
+@each $breakpoint in $mq-breakpoints {
+  $name: nth($breakpoint, 1);
+  $size: nth($breakpoint, 2);
+
+  @include mqmin($size) {
+    .visibility-#{$name}--hidden {
+      display: none;
+    }
+    .visibility-#{$name}--visible {
+      display: block;
+    }
+    .visibility-#{$name}--visible-inline {
+      display: inline-block;
+    }
+  }
+}

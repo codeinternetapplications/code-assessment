@@ -1,0 +1,229 @@
+@use '../mixins' as *;
+
+.form {
+  &__actions {
+    margin-top: rem(32);
+  }
+}
+
+// Field component
+.field {
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  @include element-spacing(3);
+  // .field__label
+  &__label {
+    display: block;
+    margin-bottom: rem(8);
+    font-size: rem(16);
+    line-height: rem(26);
+    @include font-variant('regular');
+    color: var(--color-black);
+    padding: 0;
+    padding-left: rem(20);
+    @include mqmin($bp-md) {
+      padding-left: rem(26);
+    }
+    &[aria-hidden="true"] {
+      display: none;
+    }
+  }
+  // .field__input, .field__select, .field__text-area
+  &__input,
+  &__select,
+  &__text-area {
+    appearance: none;
+    box-sizing: border-box;
+    display: block;
+    background-color: var(--color-white);
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--color-white);
+    border-radius: var(--button-border-radius);
+    @include font-variant('regular');
+    color: var(--color-brand-text);
+    width: 100%;
+    transition: all var(--duration-short) linear;
+    font-size: rem(16);
+    line-height: rem(26);
+    padding: rem(10) rem(20);
+    @include mqmin($bp-md) {
+      padding: rem(15) rem(26);
+      font-size: rem(20);
+      line-height: rem(32);
+    }
+    &:focus,
+    &:focus-visible {
+      color: var(--color-brand-text);
+      border-color: var(--color-brand-primary);
+      background-color: var(--color-white);
+      outline: none;
+    }
+    &::placeholder {
+      color: var(--color-brand-text-light);
+    }
+    &:invalid:not(:placeholder-shown),
+    &[aria-invalid="true"]:invalid {
+      box-shadow: var(--color-brand-danger) 0px 1px 3px, var(--color-brand-danger) 0px 0px 0px 2px;
+      ~ .field__icons .icon-cross {
+        display: block;
+        [fill="currentColor"]  {
+          fill: var(--color-brand-danger);
+        }
+      }
+      ~ .field__message--error {
+        display: block;
+      }
+    }
+    &:active(:not(:disabled)),
+    &:focus(:not(:disabled)),
+    &:focus-visible(:not(:disabled)) {
+      outline: none;
+      background-color: var(--color-brand-primary-50);
+    }
+    &:valid[required],
+    &:invalid:not(:placeholder-shown) {
+      padding-right: rem(56); // preserve space for icons
+    }
+    &:valid[required] {
+      ~ .field__icons .icon-checkmark {
+        display: block;
+      }
+      ~ .field__message {
+        display: none;
+      }
+    }
+    &:disabled[required] {
+      opacity: 0.32;
+      cursor: default;
+      ~ .field__message,
+      ~ .field__label {
+        opacity: 0.32;
+      }
+    }
+    ~ .field__icons .icon {
+      display: none;
+      position: absolute;
+      top: rem(-34);
+      right: rem(20);
+      @include mqmin($bp-md) {
+        top: rem(-42);
+      }
+    }
+  }
+  // .field__input, .field__select
+  &__input,
+  &__select {
+    &:-webkit-autofill {
+      box-shadow: 0 0 0 1000px var(--color-white) inset;
+    }
+  }
+  .select {
+    position: relative;
+  }
+  // .field__select
+  &__select {
+    cursor: pointer;
+    + .icon {
+      position: absolute;
+      top: 50%;
+      right: rem(16);
+      transform-origin: 50% 0;
+      transform: translateY(-50%);
+      &.icon-caret {
+        transform: rotate(90deg) translateY(-50%);
+      }
+    }
+  }
+  // .field__select-icon
+  &__select-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: rem(20);
+  }
+  &__input::-webkit-search-cancel-button,
+  input::-webkit-search-cancel-button {
+    display: none;
+  }
+  // .field__text-area
+  &__text-area {
+    padding: rem(24);
+    min-height: rem(160);
+    border-radius: var(--border-radius);
+    resize: none;
+    &--resize-vertical {
+      resize: vertical;
+    }
+  }
+  // .field__message
+  &__message {
+    display: block;
+    font-size: rem(14);
+    line-height: rem(22);
+    flex: none;
+    width: 100%;
+    padding: rem(8) rem(20);
+    box-sizing: border-box;
+    @include mqmin($bp-md) {
+      padding: rem(8) 0 rem(8) rem(26);
+    }
+    &--error {
+      display: none;
+      color: var(--color-brand-danger);
+    }
+  }
+  // .field__icons
+  &__icons {
+    position: relative;
+  }
+  // .field--checkbox (can be found in the Addresses template / style copied from the filter checkboxes)
+  &--checkbox {
+    .field__custom-checkbox {
+      position: absolute;
+      box-sizing: border-box;
+      width: rem(20);
+      height: rem(20);
+      border: 1px solid var(--color-black-20);
+      border-radius: 4px;
+      color: var(--color-white);
+      transition: border-color var(--duration-default) ease-in-out;
+      .icon {
+        display: none;
+      }
+    }
+    label {
+      position: relative;
+      z-index: 1;
+      cursor: pointer;
+      padding-left: rem(30);
+      @include mqmin($bp-md) {
+        padding-left: rem(42);
+      }
+      @include states() {
+        color: var(--color-brand-primary);
+        .field__custom-checkbox {
+          border-color: var(--color-brand-text);
+        }
+      }
+    }
+    input[type='checkbox'] {
+      position: absolute;
+      opacity: 0;
+      &:checked + .field__custom-checkbox {
+        background-color: var(--color-brand-text);
+        border-color: var(--color-brand-text);
+        .icon {
+          display: block;
+        }
+      } 
+    }
+  }
+}
+
+input[type='checkbox'] {
+  display: inline-block;
+  width: auto;
+  margin-right: 0.5rem;
+}

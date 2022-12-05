@@ -1,0 +1,129 @@
+@use '../mixins' as *;
+
+// A generic title + content wrapper with overlapping margins on top and bottom, rendered by container.liquid
+.container {
+  display: block;
+  margin-top: var(--container-spacing);
+  margin-bottom: var(--container-spacing);
+  @include mqmin($bp-md) {
+    margin-top: var(--container-spacing-md);
+    margin-bottom: var(--container-spacing-md);
+  }
+  .content-for-layout > section:first-child & {
+    &:first-of-type {
+      @include mqmax($bp-md) {
+        margin-top: 0;
+      }
+    }
+  }
+  &.container--wide {
+    max-width: 100%;
+  }
+  &.container--full {
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  // Add padding, to be used when background color should be visible instead of margins
+  &.container--background {
+    padding-top: var(--container-spacing);
+    padding-bottom: var(--container-spacing);
+    @include mqmin($bp-md) {
+      padding-top: var(--container-spacing-md);
+      padding-bottom: var(--container-spacing-md);
+    }
+  }
+  // Display as a content-block, no overlapping margins for previous/next rows
+  &.container--block {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+// container-wrapper header and content
+.container-header,
+.container-content,
+.container-footer {
+  @include site-center;
+  @include site-side-spacing;
+  .container--wide > &,
+  &.container--wide {
+    max-width: 100%;
+  }
+  .container--full > &,
+  &.container--full {
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+.site-center--extra-wide {
+  max-width: var(--site-center-extra-wide);
+}
+.site-center--wide {
+  max-width: var(--site-center-wide);
+}
+
+// 1320px
+.site-center--compact {
+  max-width: var(--site-center-compact);
+  box-sizing: border-box;
+  @include mqmin($bp-xxl) {
+    max-width: var(--site-center-wide);
+  }
+}
+.site-center--narrow {
+  max-width: var(--site-center-narrow);
+}
+// 960px
+.site-center--small {
+  max-width: var(--site-center-small);
+  @include mqmin($bp-xxl) {
+    max-width: var(--site-center-narrow);
+  }
+}
+// container header
+.container-header {
+  align-items: center;
+  h1 {
+    margin-top: var(--container-spacing);
+    @include mqmin($bp-md) {
+      margin: 0;
+    }
+  }
+  .icon {
+    transform: rotate(180deg);
+    margin-right: 1rem;
+  }
+}
+.container-heading {
+  margin: 0;
+}
+
+// container content
+.container-content {
+  margin-top: var(--container-row-spacing);
+  @include mqmin($bp-md) {
+    margin-top: var(--container-row-spacing-md);
+  }
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+// container header
+.container-footer {
+  margin-top: var(--container-spacing);
+  margin-bottom: 0;
+}
+
+// Remove bottom margins of last childs
+.container.container--block:last-child,
+.container.container--accent:last-child {
+  margin-bottom: 0;
+}
+.shopify-section:last-child {
+  .container.container--block,
+  .container.container--accent {
+    margin-bottom: 0;
+  }
+}

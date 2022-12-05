@@ -1,0 +1,5 @@
+@mixin font-variant($name) {
+  font-family: var(--font-#{$name}-family);
+  font-weight: var(--font-#{$name}-weight);
+  font-style: var(--font-#{$name}-style);
+}

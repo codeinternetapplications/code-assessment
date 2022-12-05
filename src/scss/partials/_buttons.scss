@@ -1,0 +1,246 @@
+@use '../mixins' as *;
+
+@mixin transition-with-transform {
+  --button-hover-transform: scale(1.035);
+  transition-property: background-color, color, border-color, transform;
+}
+
+button {
+  cursor: pointer;
+}
+
+.button,
+.shopify-challenge__button {
+  box-sizing: border-box;
+  appearance: none;
+  background-color: var(--button-background);
+  border: var(--button-border) solid var(--button-border-color);
+  border-radius: var(--button-border-radius);
+  color: var(--button-text);
+  cursor: pointer;
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  font: inherit;
+  padding: rem(13) rem(41);
+  text-decoration: none;
+  font-size: rem(20);
+  line-height: rem(36);
+  letter-spacing: calc((rem(20) / 100) * .8);
+  transition-property: background-color, color, border-color, opacity;
+  transition-timing-function: ease-in-out;
+  transition-duration: var(--duration-default);
+  @include font-variant('light');
+  &:not([data-collapsible-trigger]) {
+    text-align: center;
+  }
+  &:hover,
+  &:focus,
+  &:active {
+    outline: none;
+    text-decoration: none;
+    border-color: var(--button-hover-border-color);
+    background-color: var(--button-hover-background);
+    color: var(--button-hover-text);
+    transform: var(--button-hover-transform);
+  }
+  .icon {
+    margin-left: .25rem;
+    margin-right: .25rem;
+  }
+}
+
+
+/******
+# Types
+******/
+.button--primary {
+  --button-background: var(--color-brand-primary);
+  --button-border-color: var(--color-brand-primary);
+  --button-text: var(--color-brand-text-on-primary);
+  --button-hover-background: var(--color-brand-primary);
+  --button-hover-border-color: var(--color-brand-primary);
+  --button-hover-text: var(--color-brand-text-on-primary);
+  @include transition-with-transform;
+}
+.button--secondary {
+  --button-background: var(--color-brand-secondary);
+  --button-border-color: var(--color-brand-secondary);
+  --button-text: var(--color-brand-text-on-secondary);
+  --button-hover-background: var(--color-brand-primary);
+  --button-hover-border-color: var(--color-brand-primary);
+  --button-hover-text: var(--color-brand-text-on-primary);
+}
+.button--outline {
+  --button-background: transparent;
+  --button-border-color: var(--color-brand-secondary);
+  --button-text: var(--color-brand-secondary);
+  --button-hover-background: transparent;
+  --button-hover-border-color: var(--color-brand-secondary);
+  --button-hover-text: var(--color-brand-secondary);
+  @include transition-with-transform;
+}
+.button--link {
+  --button-background: transparent;
+  --button-border-color: transparent;
+  --button-text: var(--color-brand-text);
+  --button-hover-background: transparent;
+  --button-hover-border-color: transparent;
+  --button-hover-text: var(--color-brand-primary);
+  padding: 0;
+  border: none;
+}
+
+
+/******
+# Sizes
+******/
+.button--xs {
+  font-size: rem(8);
+  line-height: rem(9.8);
+  padding: rem(4);
+}
+.button--sm {
+  font-size: rem(12);
+  line-height: rem(14.4);
+  padding: rem(6);
+}
+.button--md {
+  font-size: rem(20);
+  line-height: rem(36);
+  padding: rem(10);
+}
+.button--lg {
+  font-size: rem(24);
+  line-height: rem(28.8);
+  padding: rem(12);
+}
+.button--xl {
+  font-size: rem(28);
+  line-height: rem(33.6);
+  padding: rem(14);
+}
+
+
+/*******
+# Widths
+*******/
+.button--full-width-mobile {
+  @include mqmax($bp-md) {
+    display: flex;
+    width: 100%;
+    max-width: rem(500);
+    margin-inline: auto;
+  }
+}
+
+.button--full-width-desktop {
+  @include mqmin($bp-md) {
+    display: flex;
+    width: 100%;
+  }
+}
+
+.button--full-width {
+  display: flex;
+  width: 100%;
+}
+
+
+/*********
+# Disabled
+*********/
+.button:disabled,
+.button[aria-disabled='true'],
+.button.disabled,
+.form-fields button:disabled {
+  cursor: not-allowed;
+  transform: none;
+  --button-background: var(--color-brand-disabled);
+  --button-border-color: var(--color-brand-disabled);
+  --button-text: var(--color-brand-text-on-disabled);
+  --button-hover-background: var(--color-brand-disabled);
+  --button-hover-border-color: var(--color-brand-disabled);
+  --button-hover-text: var(--color-brand-text-on-disabled);
+  &.button--link {
+    --button-background: transparent;
+    --button-border-color: transparent;
+    --button-hover-background: transparent;
+    --button-hover-border-color: transparent;
+  }
+}
+
+
+/******
+# Loading
+******/
+.button.loading {
+  color: transparent;
+}
+
+.button.loading:after {
+  animation: loading var(--duration-long) infinite linear;
+  border: 5px solid transparent;
+  border-left: 5px solid var(--button-text);
+  border-radius: 100%;
+  box-sizing: content-box;
+  content: '';
+  display: block;
+  height: 2rem;
+  position: absolute;
+  width: 2rem;
+}
+
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+/***************
+# Payment button
+***************/
+.shopify-payment-button {
+  button {
+    @extend .button, .button--primary;
+    display: block;
+    text-align: center;
+    width: 100%;
+    + button {
+      margin: 0 var(--element-spacing) var(--element-spacing) 0;
+      &:last-child {
+        margin: 0 0 var(--element-spacing) 0;
+      }
+    }
+    @include states(":not([disabled])") {
+      background-color: var(--button-hover-background);
+      border-color: var(--button-hover-border-color);
+      color: var(--button-hover-text);
+    }
+    &.shopify-payment-button__button--hidden,
+    &[disabled] {
+      display: none;
+    }
+  }
+}
+
+// overwrite Shopify styling
+.shopify-payment-button__more-options,
+.shopify-payment-button__button--unbranded {
+  all: unset;
+}
+
+.buttons {
+  margin-bottom: calc(-1 * var(--element-spacing));
+  .button {
+    margin: 0 var(--element-spacing) var(--element-spacing) 0;
+    &:last-child {
+      margin: 0 0 var(--element-spacing) 0;
+    }
+  }
+}

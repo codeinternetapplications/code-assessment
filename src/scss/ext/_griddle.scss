@@ -1,0 +1,314 @@
+/** Griddle grid: https://github.com/daveberning/griddle
+	Use as: <div class="is-grid"></div>
+	This will create a 12 column grid with gutters. Use class 'has-no-col-gap' or 'has-no-row-gap' to disable gutters.
+
+	Each column should have a class to define where it's placed.
+		<div class="is-col-3">Column One spanning 3 columns</div>
+		<div class="is-col-6">Column Two spanning 6 columns</div>
+		<div class="is-col-3">Column Three spanning 3 columns</div>
+
+	Columns can have an offset:
+		<div class="is-col-1 grid-col-start-2">Column will placed on the second column and span 1 column</div>
+
+  Responsive columns
+    - column stretches 7 rows by default and 6 columns from breakpoint 'xl'
+		<div class="is-col-1 is-col-7 is-col-6-xl ">Column will placed on the second column and span 1 column</div>
+
+    - column offset
+		<div class="is-col-1 grid-col-start-2-md ">Column will have a 2 col offset only from breakpoint 'md'.</div>
+*/
+@use '../mixins' as *;
+
+$sizes: "-sm""""-md""-lg";
+$maximum: 12;
+/* Note:
+** These must be in the same order
+----------------------------------------- */
+$breakpoints: "xs""sm""md""lg""xl""xxl";
+$breakpoint_values: $bp-xs $bp-sm $bp-md $bp-lg $bp-xl $bp-xxl;
+@function get_first_chars($word, $number) {
+  @return str-slice($word, 0, $number);
+}
+@function variable($var_name) {
+  @return var(--#{$var_name});
+}
+/* Grid
+------------------------ */
+.is-grid,
+.is-grid-inline {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(#{$maximum}, minmax(0, 1fr)); // 12 Column Grid By Default
+  grid-column-gap: variable('col-gap');
+  grid-row-gap: variable('row-gap');
+  @include mqmin($bp-md) {
+    grid-column-gap: variable('col-gap-md');
+    grid-row-gap: variable('row-gap-md');
+  }
+  &.is-narrower-gap {
+    grid-column-gap: variable('col-gap');
+    grid-row-gap: variable('row-gap');
+  }
+  & > * {
+    // Items without a .is-col class are 12 by default
+    grid-column-end: span 1;
+  }
+  &.is-dense {
+    grid-auto-flow: dense;
+  }
+  &.has-wrapped-row {
+    grid-auto-flow: row;
+    &.is-dense {
+      grid-auto-flow: row dense;
+    }
+  }
+  &.has-wrapped-col {
+    grid-auto-flow: column;
+    &.is-dense {
+      grid-auto-flow: column dense;
+    }
+  }
+}
+.is-grid-inline {
+  display: inline-grid !important;
+}
+
+@for $i from 1 through length($breakpoints) {
+  .is-grid-#{nth($breakpoints, $i)} {
+    @media screen and (min-width: #{nth($breakpoint_values, $i)}) {
+      display: grid;
+      grid-template-rows: auto;
+      grid-template-columns: repeat(#{$maximum}, minmax(0, 1fr)); // 12 Column Grid By Default
+      direction: ltr;
+      grid-column-gap: variable('col-gap');
+      grid-row-gap: variable('row-gap');
+      @include mqmin($bp-xl) {
+        grid-column-gap: variable('col-gap-md');
+        grid-row-gap: variable('row-gap-md');
+      }
+      @include mqmin($bp-xxl+1) {
+        grid-column-gap: variable('col-gap-md');
+        grid-row-gap: variable('row-gap-md');
+      }
+    }
+    &.is-dense {
+      grid-auto-flow: dense;
+    }
+  }
+}
+
+/* Class Generation
+------------------------- */
+@mixin grid_has($grid_direction) {
+  // Generate Grid Template Classes --- Ex: .has-col-6 or .has-col-4-md
+  $first_letters_of_direction: get_first_chars($grid_direction, 3);
+  @for $i from 1 through $maximum {
+    .has-#{$first_letters_of_direction}-#{$i} {
+      grid-template-#{$grid_direction}: repeat($i, minmax(0, 1fr));
+    }
+  }
+  @for $b from 1 through length($breakpoints) {
+    $name: #{nth($breakpoints, $b)};
+    $breakpoint: #{nth($breakpoint_values, $b)};
+    @for $i from 1 through $maximum {
+      @include mqmin($breakpoint) {
+        .has-#{$first_letters_of_direction}-#{$i}-#{$name} {
+          grid-template-#{$grid_direction}: repeat($i, minmax(0, 1fr));
+        }
+      }
+    }
+  }
+}
+@mixin grid_item_spans($grid_direction) {
+  // Generate Grid Template Classes --- Ex: .is-col-6 or .is-col-4-md
+  $first_letters_of_direction: get_first_chars($grid_direction, 3);
+  @for $i from 1 through $maximum {
+    .is-#{$first_letters_of_direction}-#{$i} {
+      grid-#{$grid_direction}-end: span #{$i};
+    }
+  }
+  @for $b from 1 through length($breakpoints) {
+    $name: #{nth($breakpoints, $b)};
+    $breakpoint: #{nth($breakpoint_values, $b)};
+    @for $i from 1 through $maximum {
+      @include mqmin($breakpoint) {
+        .is-#{$first_letters_of_direction}-#{$i}-#{$name} {
+          grid-#{$grid_direction}-end: span #{$i};
+        }
+      }
+    }
+  }
+}
+/* Column + row offset
+------------------------- */
+@mixin grid_offset($grid_direction) {
+  $first_letters_of_direction: get_first_chars($grid_direction, 3);
+  @for $i from 1 through $maximum {
+    .grid-#{$first_letters_of_direction}-start-#{$i} {
+      grid-#{$grid_direction}-start: #{$i};
+    }
+  }
+  @for $b from 1 through length($breakpoints) {
+    $name: #{nth($breakpoints, $b)};
+    $breakpoint: #{nth($breakpoint_values, $b)};
+    @for $i from 1 through $maximum {
+    // is-{col|row}-{breakpoint}-{number} --- Ex: .is-col-6-lg
+      @include mqmin($breakpoint) {
+        .grid-#{$first_letters_of_direction}-start-#{$i}-#{$name} {
+          grid-#{$grid_direction}-start: #{$i};
+        }
+      }
+    }
+  }
+}
+@include grid_offset("row");
+@include grid_offset("column");
+@include grid_has("rows");
+@include grid_has("columns");
+@include grid_item_spans("row");
+@include grid_item_spans("column");
+
+/* Class Generation
+------------------------- */
+@mixin generate_gap($grid_direction) {
+  // Generate Grid Gap Classes --- Ex: .has-col-gap-md (medium column gap
+  $first_letters_of_direction: get_first_chars($grid_direction, 3);
+  @each $size in $sizes {
+    @each $direction in $grid_direction {
+      .has-#{$first_letters_of_direction}-gap#{$size} {
+        grid-#{$direction}-gap: variable(#{'spacing#{$size}'});
+      }
+      .has-no-#{$first_letters_of_direction}-gap#{$size} {
+        grid-#{$direction}-gap: 0;
+      }
+    }
+  }
+}
+@mixin generate_direction($direction) {
+  // Generate Direction Classes --- Ex: .is-rtl or .is-ltr
+  .is-#{$direction} {
+    direction: #{$direction};
+  }
+  @for $b from 1 through length($breakpoints) {
+    $name: #{nth($breakpoints, $b)};
+    $breakpoint: #{nth($breakpoint_values, $b)};
+    @include mqmin($breakpoint) {
+      .is-#{$direction}-#{$name} {
+        direction: #{$direction};
+      }
+    }
+  }
+}
+@mixin generate_order_classes($grid_direction) {
+  // Generate Order Classes --- Ex: is-order-2-lg
+  @for $i from 1 through $maximum {
+    .is-order-#{$i} {
+      order: #{$i};
+    }
+  }
+  @for $b from 1 through length($breakpoints) {
+    $name: #{nth($breakpoints, $b)};
+    $breakpoint: #{nth($breakpoint_values, $b)};
+    @for $i from 1 through $maximum {
+      .is-order-#{$i}-#{$name} {
+        @include mqmin($breakpoint) {
+          order: #{$i}
+        }
+      }
+    }
+  }
+}
+@include generate_gap("row");
+@include generate_gap("column");
+@include generate_direction("ltr");
+@include generate_direction("rtl");
+@include generate_order_classes("row");
+@include generate_order_classes("column");
+
+/* Flexbox
+------------------------- */
+@mixin generate_align_self_classes {
+  .is-flex {
+    display: flex;
+  }
+  .is-flex-inline {
+    display: inline-flex;
+  }
+  @for $i from 1 through length($breakpoints) {
+    .is-flex-#{nth($breakpoints, $i)} {
+      @media screen and (min-width: #{nth($breakpoint_values, $i)}) {
+        display: flex;
+      }
+    }
+    .is-flex-inline-#{nth($breakpoints, $i)} {
+      @media screen and (min-width: #{nth($breakpoint_values, $i)}) {
+        display: inline-flex;
+      }
+    }
+  }
+
+  $flex_types: wrap,wrap-reverse,nowrap;
+  @each $type in $flex_types {
+    .is-flex-#{$type} {
+      flex-wrap: #{$type};
+    }
+  }
+  @for $i from 1 through length($breakpoints) {
+    @each $type in $flex_types {
+      .is-flex-#{$type}-#{nth($breakpoints, $i)} {
+        @media screen and (min-width: #{nth($breakpoint_values, $i)}) {
+          flex-wrap: #{$type};
+        }
+      }
+    }
+  }
+  
+  $direction_types: column,column-reverse,row,row-reverse;
+  @each $type in $direction_types {
+    .is-directioned-#{$type} {
+      flex-direction: #{$type};
+    }
+  }
+  @for $i from 1 through length($breakpoints) {
+    @each $type in $direction_types {
+      .is-directioned-#{$type}-#{nth($breakpoints, $i)} {
+        @media screen and (min-width: #{nth($breakpoint_values, $i)}) {
+          flex-direction: #{$type};
+        }
+      }
+    }
+  }
+
+  $justify_types: start,end,center,space-between,space-around,space-evenly,flex-end,flex-start;
+  @each $type in $justify_types {
+    .is-justified-#{$type} {
+      justify-content: #{$type};
+    }
+  }
+  @for $i from 1 through length($breakpoints) {
+    @each $type in $justify_types {
+      .is-justified-#{$type}-#{nth($breakpoints, $i)} {
+        @media screen and (min-width: #{nth($breakpoint_values, $i)}) {
+          justify-content: #{$type};
+        }
+      }
+    }
+  }
+
+  $align_types: baseline,stretch,start,end,center,flex-end,flex-start;
+  @each $type in $align_types {
+    .is-aligned-#{$type} {
+      align-items: #{$type};
+    }
+  }
+  @for $i from 1 through length($breakpoints) {
+    @each $type in $align_types {
+      .is-aligned-#{$type}-#{nth($breakpoints, $i)} {
+        @media screen and (min-width: #{nth($breakpoint_values, $i)}) {
+          align-items: #{$type};
+        }
+      }
+    }
+  }
+}
+@include generate_align_self_classes;

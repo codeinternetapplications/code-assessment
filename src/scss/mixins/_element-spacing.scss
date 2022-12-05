@@ -1,0 +1,7 @@
+// Default element styling
+@mixin element-spacing($multiplier: 1) {
+  margin-bottom: calc(var(--element-spacing) * #{$multiplier});
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

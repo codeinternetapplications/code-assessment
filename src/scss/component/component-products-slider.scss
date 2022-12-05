@@ -1,0 +1,109 @@
+@use '../mixins' as *;
+
+// Product sliders - Used on the Recommended products section & regular Product sliders section
+
+// the badge space that goes outside the product card
+$overflow-badge-width: 8px;
+$overflow-badge-width-lg: 17px;
+$overflow-badge-double-width-lg: 34px;
+
+.products-slider {
+  // these are the container margins from 1.0 that were defined in container.scss . Delete these if you want to keep the ones being currently used in 2.0 
+  &.container {
+    margin-top: rem(20);
+    margin-bottom: rem(80);
+    @include mqmin($bp-md) {
+      margin-top: rem(46);
+      margin-bottom: rem(200);
+    }
+  }
+  .container-content {
+    margin-top: rem(16);
+    @include mqmin($bp-md) {
+      margin-top: rem(20);
+    }
+    @include mqmin($bp-xl) {
+      max-width: 100%;
+      padding-inline: 0;
+    }
+  }
+  .section-bottom-button {
+    margin-top: var(--container-row-spacing);
+  }
+  // Slider
+  &__row {
+    // the negative margin-left & last value on the width calc are added because of the badges
+    width: calc(100% + var(--site-side-spacing) + $overflow-badge-width);
+    margin-left: -$overflow-badge-width;
+    @include mqmin($bp-lg) {
+      width: calc(100% + var(--site-side-spacing-lg) + $overflow-badge-width-lg);
+      margin-left: -$overflow-badge-width-lg;
+    }
+    // from these breakpoints, the slider is 100% window width minus the margin left. So calculate the margin-left according to the window width and negative margin given because of possible badges
+    @include mqmin($bp-xl) {
+      width: calc(100% - ((100% - var(--site-center-compact) - $overflow-badge-double-width-lg) / 2));
+      margin-left: calc((100% - var(--site-center-compact) - $overflow-badge-double-width-lg) / 2);
+    }
+    @include mqmin($bp-xxl) {
+      width: calc(100% - ((100% - var(--site-center-wide) - $overflow-badge-double-width-lg) / 2));
+      margin-left: calc((100% - var(--site-center-wide) - $overflow-badge-double-width-lg) / 2);
+    }
+    // from $bp-xxxl, the max-width of the slider will be --site-center-wide + badge compensation
+    @include mqmin($bp-3xl) {
+      width: calc(var(--site-center-wide) + $overflow-badge-width-lg);
+    }
+    .swiper-wrapper {
+      padding-left: $overflow-badge-width;
+      @include mqmin($bp-lg) {
+        padding-left: $overflow-badge-width-lg;
+      }
+    }
+  }
+  .swiper-container {
+    position: relative;
+    @include states() {
+      .swiper-button-prev,
+      .swiper-button-next {
+        &:not(.swiper-button-disabled) {
+          opacity: 1;
+        }
+      }
+    }
+  }
+  .swiper-button {
+    &-prev,
+    &-next {
+      top: 38%;
+      &:not(.swiper-button-disabled) {
+        opacity: 0.6;
+        @include states() {
+          opacity: 1;
+        }
+      }
+      // hide navigation on mobile
+      @include mqmax($bp-md) {
+        display: none;
+      }
+      path {
+        stroke: var(--color-brand-background-accent);
+        stroke-width: rem(0.5);
+      }
+    }
+    &-prev {
+      @include mqmin($bp-md) {
+        left: rem(18);
+      }
+    }
+    &-next {
+      @include mqmin($bp-md) {
+        right: rem(10);
+      }
+      @include mqmin($bp-lg) {
+        right: rem(20);
+      }
+      @include mqmin($bp-3xl) {
+        right: 0;
+      }
+    }
+  }
+}

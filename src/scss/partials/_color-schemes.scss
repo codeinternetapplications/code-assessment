@@ -1,0 +1,70 @@
+// Color schemes for elements and wrappers
+.color-scheme {
+  &--primary {
+    --color-brand-background: var(--color-brand-primary);
+    --color-brand-text: var(--color-brand-text-on-primary);
+    --color-brand-dark: var(--color-brand-primary-dark);
+    --color-brand-link: var(--color-brand-text-on-primary);
+    --color-brand-link-hover: var(--color-brand-text-on-primary);
+    --swiper-pagination-color: var(--color-black);
+    background: var(--color-brand-background);
+    color: var(--color-brand-text);
+  }
+  &--secondary {
+    --color-brand-background: var(--color-brand-secondary);
+    --color-brand-text: var(--color-brand-text-on-secondary);
+    --color-brand-dark: var(--color-brand-secondary-dark);
+    --color-brand-link: var(--color-brand-text-on-secondary);
+    --color-brand-link-hover: var(--color-brand-text-on-secondary);
+    background: var(--color-brand-background);
+    color: var(--color-brand-text);
+  }
+  &--tertiary  {
+    --color-brand-background: var(--color-brand-tertiary );
+    --color-brand-text: var(--color-brand-text-on-tertiary );
+    --color-brand-dark: var(--color-brand-tertiary -dark);
+    --color-brand-link: var(--color-brand-text-on-tertiary );
+    --color-brand-link-hover: var(--color-brand-text-on-tertiary );
+    background: var(--color-brand-background);
+    color: var(--color-brand-text);
+  }
+  &--quaternary {
+    --color-brand-background: var(--color-brand-quaternary);
+    --color-brand-text: var(--color-brand-text-on-quaternary);
+    --color-brand-dark: var(--color-brand-quaternary-dark);
+    --color-brand-link: var(--color-brand-text-on-quaternary);
+    --color-brand-link-hover: var(--color-brand-text-on-quaternary);
+    background: var(--color-brand-background);
+    color: var(--color-brand-text);
+  }
+  &--quinary {
+    --color-brand-background: var(--color-brand-quinary);
+    --color-brand-text: var(--color-brand-text-on-quinary);
+    --color-brand-dark: var(--color-brand-quinary-dark);
+    --color-brand-link: var(--color-brand-text-on-quinary);
+    --color-brand-link-hover: var(--color-brand-text-on-quinary);
+    background: var(--color-brand-background);
+    color: var(--color-brand-text);
+  }
+  &--accent {
+    --color-brand-background: var(--color-brand-background-accent);
+    --color-brand-text: var(--color-brand-text-on-accent);
+    --color-brand-dark: var(--color-brand-background-accent-dark);
+    background: var(--color-brand-background);
+    color: var(--color-brand-text);
+  }
+  &--gray {
+    --color-brand-background: var(--color-black-5);
+    background: var(--color-black-5);
+  }
+}
+
+$colors: primary, secondary, tertiary, quaternary, quinary, accent, text, text-on-secondary, text-on-quaternary, text-on-tertiary, text-on-quinary ;
+@each $color in $colors {
+  .icon.icon--#{$color} [fill="currentColor"] {
+    fill: var(--color-brand-#{$color});
+    .link & {
+      fill: var(--color-brand-#{$color});
+    }
+  }
+}

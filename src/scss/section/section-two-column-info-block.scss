@@ -1,0 +1,151 @@
+@use '../mixins' as *;
+
+.section-two-column-info-block {
+  .container {
+    // these are the container margins from 1.0 that were defined in container.scss . Delete these if you want to keep the ones being currently used in 2.0
+    margin-block: rem(80);
+    @include mqmin($bp-md) {
+      margin-block: rem(100);
+    }
+    @include mqmin($bp-lg) {
+      margin-block: rem(200);
+    }
+  }
+  .two-column-info-block {
+    // reserve extra spacing at the bottom of the container for the colored shape behind the image
+    @include mqmin($bp-md) {
+      padding-bottom: 11.45%;
+    }
+    @include mqmin($bp-lg) {
+      column-gap: rem(32);
+    }
+    @include mqmin($bp-xl) {
+      padding-bottom: 15%;
+    }
+    @include mqmin($bp-xxl) {
+      padding-bottom: 10.8%;
+    }
+    // TODO: Video icon
+    &__video {
+      position: relative;
+      overflow: hidden;
+      height: 0;
+      cursor: pointer;
+      padding-bottom: 100%;
+      border-radius: rem(8);
+      z-index: 2;
+      video {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .video__icon {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 100%;
+        background-color: rgba(39,25,25,0.1); // --color-black
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: rem(64);
+        height: rem(64);
+        opacity: 1;
+        transition: 0.5s opacity;
+        @include mqmin($bp-md) {
+          width: rem(144);
+          height: rem(144);
+        }
+      }
+      i {
+        margin-left: rem(4);
+        @include mqmin($bp-md) {
+          width: rem(26);
+          height: rem(26);
+          margin-left: rem(7);
+        }
+      }
+      path {
+        @include mqmin($bp-md) {
+          stroke-width: 1;
+        }
+      }
+      &.playing {
+        .video__icon {
+          opacity: 0;
+        }
+      }
+    }
+    &__content {
+      @include mqmin($bp-md) {
+        padding-block: var(--spacing);
+      }
+    }
+    &__text {
+      margin-top: var(--spacing);
+    }
+    &__button {
+      margin-top: var(--spacing);
+      @include mqmin($bp-md) {
+        margin-top: rem(40); 
+      }
+    }
+    &__image {
+      position: relative;
+      // reserve extra space below the image for the colored square behind it
+      margin-bottom: 30%;
+      @include mqmin($bp-md) {
+        // reset the extra space for __image element, extra space is covered via the .two-column-info-block element
+        margin-bottom: 0;
+      }
+      figure {
+        position: relative;
+        z-index: 2;
+        border-radius: var(--border-radius);
+        margin-bottom: 0;
+      }
+      // color square behind image
+      .colored-shape {
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 1;
+        top: 20.25%;
+        bottom: 0;
+        left: 20.5%;
+        border-radius: var(--border-radius);
+        @include mqmin($bp-md) {
+          top: 20%;
+          left: 22%;
+        }
+        @include mqmin($bp-lg) {
+          top: 36.5%;
+        }
+        @include mqmin($bp-xxl) {
+          left: 30%;
+        }
+      }
+    }
+  }
+}
+
+// set stoov heatwave colors with a key and value
+$heatwave-colors: (
+  "heatwave-transparent": "../assets/heatwave-transparent.svg",
+  "heatwave-light-blue": "../assets/heatwave-light-blue.svg", 
+  "heatwave-salmon": "../assets/heatwave-salmon.svg", 
+  "heatwave-olive-green": "../assets/heatwave-olive-green.svg"
+);
+// loop the colors and assign a background
+@each $name, $color in $heatwave-colors {
+  .colored-shape--#{$name} {
+    background: url($color) no-repeat center / cover;
+  }
+}

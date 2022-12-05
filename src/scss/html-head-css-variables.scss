@@ -1,0 +1,162 @@
+@font-face {
+  font-family: 'F37Attila Medium';
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url("//cdn.shopify.com/s/files/1/0550/3202/1172/t/66/assets/f37attila-medium.woff2?v=67866209483215715141666851468") format("woff2"),
+       url("//cdn.shopify.com/s/files/1/0550/3202/1172/t/66/assets/f37attila-medium.woff?v=11598172626722934981666851468") format("woff");
+}
+
+@font-face {
+  font-family: 'EuclidFlex Light';
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+  src: url("//cdn.shopify.com/s/files/1/0550/3202/1172/t/66/assets/euclidFlex-light.woff2?v=41948398372108890451666851468") format("woff2"),
+       url("//cdn.shopify.com/s/files/1/0550/3202/1172/t/66/assets/euclidFlex-light.woff?v=147555424179336065541666851468") format("woff");
+}
+
+@font-face {
+  font-family: 'EuclidFlex Regular';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("//cdn.shopify.com/s/files/1/0550/3202/1172/t/66/assets/euclidFlex-regular.woff2?v=12613606180425453411666851468") format("woff2"),
+       url("//cdn.shopify.com/s/files/1/0550/3202/1172/t/66/assets/euclidFlex-regular.woff?v=145026975965827726961666851468") format("woff");
+}
+
+:root {
+    
+  --site-center-small: 960px;
+  --site-center-narrow: 1000px;
+  --site-center-compact: 1320px;
+  --site-center: 1440px;
+  --site-center-wide: 1760px;
+  --site-center-extra-wide: 1920px;
+
+  
+  --site-side-spacing: 1rem;
+  --site-side-spacing-md: 1rem;
+  --site-side-spacing-lg: 3.75rem;
+  --site-side-spacing-xxl: 5rem;
+
+  
+  --element-spacing: 0.5rem;
+
+  
+  --container-spacing: 2rem;
+  --container-spacing-md: 3.5rem;
+
+  
+  --container-row-spacing: 1.25rem;
+  --container-row-spacing-md: 2.875rem;
+
+  --container-row-large-spacing: 5rem;
+  --container-row-large-spacing-md: 12.5rem;
+
+  
+  --spacing-sm: 1rem;
+  --spacing: 1.5rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 1.5rem;
+
+  --row-gap-sm: 1rem;
+  --row-gap: 1rem;
+  --row-gap-md: 1.5rem;
+
+  --col-gap-sm: 1rem;
+  --col-gap: 1rem;
+  --col-gap-md: 1.5rem;
+
+  
+  --font-light-family: 'EuclidFlex Light', Verdana, Arial, Helvetica, sans-serif;
+  --font-light-style: normal;
+  --font-light-weight: 300;
+
+  --font-regular-family: 'EuclidFlex Regular', Verdana, Arial, Helvetica, sans-serif;
+  --font-regular-style: normal;
+  --font-regular-weight: 400;
+
+  --font-heading-family: 'F37Attila Medium', Verdana, Arial, Helvetica, sans-serif;
+  --font-heading-style: normal;
+  --font-heading-weight: 500;
+
+  
+  --color-brand-background: #F7F3ED;
+  --color-brand-background-alpha-50: rgba(247, 243, 237, 0.5);
+  --color-brand-background-accent: #E3DCD1;
+  --color-brand-text: #271919;
+  --color-brand-text-light: #B9B2AD;
+
+  --color-brand-link: var(--color-brand-secondary);
+  --color-brand-link-hover: var(--color-brand-primary);
+
+  --color-brand-primary: #E04E39;
+  --color-brand-text-on-primary: #F7F3ED;
+
+  --color-brand-secondary: #271919;
+  --color-brand-secondary-alpha-20: rgba(39, 25, 25, 0.2);
+  --color-brand-text-on-secondary: #F7F3ED;
+
+  --color-brand-tertiary: #D2DFD9;
+  --color-brand-text-on-tertiary: #271919;
+
+  --color-brand-quaternary: #FAB995;
+  --color-brand-text-on-quaternary: #271919;
+
+  --color-brand-quinary: #B4B58A;
+  --color-brand-text-on-quinary: #271919;
+
+  --color-black: #271919;
+  --color-black-50: #938c8c;
+  --color-black-30: #bebaba;
+  --color-black-20: #d4d1d1;
+  --color-black-10: #e9e8e8;
+
+  --color-off-white: #F7F3ED;
+  --color-white: #FFFFFF;
+
+  --color-border: #D8D8D8;
+  --color-border-50: #ececec;
+
+  --color-brand-disabled: #DDDDDD;
+  --color-brand-text-on-disabled: #999999;
+
+  --color-brand-success: green;
+  --color-brand-text-on-success: #F7F3ED;
+  --color-brand-danger: red;
+  --color-brand-text-on-danger: #F7F3ED;
+
+  
+  --border-radius: 0.5rem;
+  --border-radius-md: 1rem;
+  --border-color: rgba(224, 78, 57, 0.3);
+
+  --button-border: 1px;
+  --button-border-radius: 4rem;
+  --button-border-color: var(--border-color);
+  --button-background: transparent;
+  --button-text: #E04E39;
+  --button-hover-background: transparent;
+  --button-hover-text: #271919;
+  --button-hover-border-color: transparent;
+
+  
+  --z-index-dropdown: 1000;
+  --z-index-sticky: 1020;
+  --z-index-fixed: 1030;
+  --z-index-offcanvas-backdrop: 1040;
+  --z-index-offcanvas: 1045;
+  --z-index-modal-backdrop: 1050;
+  --z-index-modal: 1055;
+  --z-index-popover: 1070;
+  --z-index-tooltip: 1080;
+
+  
+  --duration-short: 100ms;
+  --duration-default: 200ms;
+  --duration-long: 400ms;
+
+  --swiper-pagination-color: #E04E39;
+
+}

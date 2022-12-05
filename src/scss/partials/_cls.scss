@@ -1,0 +1,131 @@
+@use '../mixins' as *;
+
+// Prevents CLS
+.swiper-container {
+  overflow: hidden;
+  &--2-slides {
+    .swiper-slide {
+      width: calc((100% - (1 * var(--col-gap))) / 2);
+      margin-right: var(--col-gap);
+    }
+  }
+  &--3-slides {
+    .swiper-slide {
+      width: calc((100% - (2 * var(--col-gap))) / 3);
+      margin-right: var(--col-gap);
+    }
+  }
+  &--4-slides {
+    .swiper-slide {
+      width: calc((100% - (3 * var(--col-gap))) / 4);
+      margin-right: var(--col-gap);
+    }
+  }
+  &--md-2-slides {
+    @include mqmin($bp-md) {
+      .swiper-slide {
+        width: calc((100% - var(--col-gap)) / 2);
+        margin-right: var(--col-gap);
+      }
+    }
+  }
+  &--md-3-slides {
+    @include mqmin($bp-md) {
+      .swiper-slide {
+        width: calc((100% - (2 * var(--col-gap))) / 3);
+        margin-right: var(--col-gap);
+      }
+    }
+  }
+  &--md-4-slides {
+    @include mqmin($bp-md) {
+      .swiper-slide {
+        width: calc((100% - (3 * var(--col-gap))) / 4);
+        margin-right: var(--col-gap);
+      }
+    }
+  }
+  &--md-5-slides {
+    @include mqmin($bp-md) {
+      .swiper-slide {
+        width: calc((100% - (4 * var(--col-gap))) / 5);
+        margin-right: var(--col-gap);
+      }
+    }
+  }
+  &--md-6-slides {
+    @include mqmin($bp-md) {
+      .swiper-slide {
+        width: calc((100% - (5 * var(--col-gap))) / 6);
+        margin-right: var(--col-gap);
+      }
+    }
+  }
+  &--lg-3-slides {
+    @include mqmin($bp-lg) {
+      .swiper-slide {
+        width: calc((100% - (2 * var(--col-gap-md))) / 3);
+        margin-right: var(--col-gap-md);
+      }
+    }
+  }
+  &--lg-4-slides {
+    @include mqmin($bp-lg) {
+      .swiper-slide {
+        width: calc((100% - (3 * var(--col-gap-md))) / 4);
+        margin-right: var(--col-gap-md);
+      }
+    }
+  }
+  &--xl-5-slides {
+    @include mqmin($bp-xl) {
+      .swiper-slide {
+        width: calc((100% - (4 * var(--col-gap-md))) / 5);
+        margin-right: var(--col-gap-md);
+      }
+    }
+  }
+  .swiper-wrapper {
+    display: flex;
+    width: 100%;
+  }
+}
+.card {
+  &__image{
+    &--secondary {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+}
+.product-card {
+  &__image {
+    &--secondary {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+    }
+  }
+}
+.hero-slider {
+  min-height: 580px;
+  @include mqmin($bp-md) {
+    min-height: 600px;
+  }
+  @include mqmin($bp-xl) {
+    min-height: 800px;
+  }
+  &__slide,
+  &__media {
+    min-height: 580px;
+    width: 100%;
+    @include mqmin($bp-md) {
+      min-height: 600px;
+    }
+    @include mqmin($bp-xl) {
+      min-height: 800px;
+    }
+  }
+}

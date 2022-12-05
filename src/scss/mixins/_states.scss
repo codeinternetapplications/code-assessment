@@ -1,0 +1,7 @@
+@mixin states($pseudo: null) {
+	&:hover#{$pseudo},
+	&:focus#{$pseudo},
+	&:active#{$pseudo} {
+ 		@content;
+	}
+}

@@ -1,0 +1,49 @@
+@use '../mixins' as *;
+
+.product__badges {
+  position: absolute;
+  top: var(--element-spacing);
+  left: calc(var(--element-spacing) * -1);
+  z-index: 20;
+  pointer-events: none;
+  gap: rem(5);
+  @include mqmin($bp-md) {
+    top: calc(var(--element-spacing) * 2);
+  }
+  @include mqmin($bp-lg) {
+    left: calc(var(--element-spacing) * -2);
+  }
+  .product__badge {
+    @include font-variant('regular');
+    text-transform: uppercase;
+    background-color: var(--color-white);
+    color: var(--color-brand-text);
+    border-radius: var(--border-radius);
+    display: inline-block;
+    padding: rem(6) rem(13);
+    pointer-events: none;
+    overflow-wrap: break-word;
+    font-size: rem(12);
+    line-height: rem(20);
+    @include mqmin($bp-md) {
+      font-size: rem(16);
+      line-height: rem(26);
+    }
+    @include mqmin($bp-lg) {
+      padding: rem(11) rem(18);
+    }
+    &--sold-out {
+      background-color: var(--color-black-50);
+      color: var(--color-off-white);
+    }
+    &--preorder,
+    &--presale {
+      background-color: var(--color-brand-tertiary);
+      color: var(--color-brand-text-on-tertiary);
+    }
+    &--sale {
+      background-color: var(--color-brand-quinary);
+      color: var(--color-brand-text-on-quinary);
+    }
+  }
+}

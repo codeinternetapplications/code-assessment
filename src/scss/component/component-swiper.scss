@@ -1,0 +1,96 @@
+@use '../mixins' as *;
+
+@import '../ext/swiper-bundle.scss';
+
+.swiper-button-prev,
+.swiper-button-next {
+  border: none;
+  background: transparent;
+  border-radius: 100%;
+  width: rem(40);
+  height: rem(40);
+  padding: 0;
+  transition: border-color var(--duration-short) linear;
+  &:after {
+    // remove swiper default arrows
+    content: '';
+    display: none;
+  }
+  .icon {
+    position: absolute;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    transition: transform var(--duration-short) linear;
+    color: var(--color-black);
+  }
+  &:hover:not([disabled]) {
+    border-color: var(--color-black);
+    .icon {
+      transform: translate(-50%,-50%) scale(1.16);
+    }
+  }
+  &:focus:not([disabled]) {
+    border-color: var(--color-black);
+    color: var(--color-black);
+    .icon {
+      transform: translate(-50%,-50%) scale(1);
+    }
+  }
+  &.swiper-button-disabled {
+    pointer-events: auto;
+  }
+  &--full {
+    border: 1px solid var(--color-border);
+    background-color: var(--color-white);
+  }
+}
+
+.swiper-button-prev {
+  left: var(--site-side-spacing);
+}
+
+.swiper-button-next {
+  right: var(--site-side-spacing);
+}
+
+.swiper-has-pagination {
+  padding-bottom: calc(var(--element-spacing) * 7.5);
+  @include mqmin($bp-md) {
+    padding-bottom: calc(var(--element-spacing) * 7.875);
+  }
+}
+
+.swiper-pagination {
+  &-bullet {
+    background-color: var(--color-brand-primary);
+    vertical-align: middle;
+    transition-property: transform, background-color;
+    transition-duration: var(--duration-default);
+    transition-timing-function: ease-out;
+    &:focus {
+      outline: none;
+    }
+  }
+  &-bullet-active {
+    background-color: var(--color-brand-primary);
+    // original bullet is 8px, scale it to 12px
+    transform: scale(1.5);
+    transition-timing-function: ease-in;
+    & + .swiper-pagination-bullet {
+      // original bullet is 8px, scale it to 10px
+      transform: scale(1.25);
+    }
+  }
+}
+
+.swiper-pagination--white {
+  .swiper-pagination-bullet {
+    background-color: var(--color-brand-background);
+  }
+}
+
+.swiper-container--pagination {
+  padding-bottom: rem(48);
+}

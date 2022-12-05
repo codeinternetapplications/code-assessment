@@ -1,0 +1,42 @@
+@use '../mixins' as *;
+
+
+// Centered part of the site
+.site-center {
+  @include site-center;
+}
+.site-center--compact {
+  --site-center: var(--site-center-compact);
+}
+.site-center--narrow {
+  --site-center: var(--site-center-narrow);
+}
+.site-center--wide {
+  --site-center: 100%;
+}
+
+// Helper class for left spacing
+.site-padding-left {
+  padding-left: var(--site-side-spacing);
+  @include mqmin($bp-md) {
+    padding-left: var(--site-side-spacing-md);
+  }
+}
+
+// Helper class for right spacing
+.site-padding-right {
+  padding-right: var(--site-side-spacing);
+  @include mqmin($bp-md) {
+    padding-right: var(--site-side-spacing-md);
+  }
+}
+
+// Helper class for left and right spacing
+.site-side-spacing {
+  @include site-padding-right;
+  @include site-padding-left;
+  &.container--full {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

@@ -1,0 +1,12 @@
+// Responsive breakpoints for media queries
+$bp-xs: 360px;
+$bp-sm: 480px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+$bp-xl: 1440px;
+$bp-xxl: 1920px;
+$bp-3xl: 2000px;
+
+// Responsive breakpoints for specific elements
+$bp-header: $bp-md;
+$bp-footer: $bp-lg;

@@ -1,0 +1,32 @@
+@use '../mixins' as *;
+
+.list-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  &--inline {
+    display: flex;
+    flex-wrap: wrap;
+    @include mqmin($bp-header) {
+      justify-content: center;
+    }
+  }
+  &--inline-start {
+    display: flex;
+    flex-wrap: wrap;
+    @include mqmin($bp-header) {
+      justify-content: flex-start;
+    }
+  }
+  &--inline-end {
+    display: flex;
+    flex-wrap: wrap;
+    @include mqmin($bp-header) {
+      justify-content: flex-end;
+    }
+  }
+  &__item {
+    display: flex;
+    align-items: center;
+  }
+}

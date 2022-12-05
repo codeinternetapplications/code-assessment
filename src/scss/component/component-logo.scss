@@ -1,0 +1,28 @@
+@use '../mixins'as *;
+
+.logo {
+  width: 100%;
+  max-width: rem(91);
+  margin: 0 auto;
+  margin-bottom: rem(7);
+  @include mqmin($bp-header) {
+    max-width: rem(104);
+    margin-left: 0;
+    margin-bottom: rem(2);
+  }
+  &__link {
+    // in IE11 svg's don't keep the ratio of their viewbox, use the responsive padding trick below to keep the ratio
+    padding-bottom: 26.45%;
+    height: 0;
+    position: relative;
+    display: block;
+  }
+  &__svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
+}

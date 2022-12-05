@@ -1,0 +1,622 @@
+@use '../mixins'as *;
+
+body {
+  @include font-variant('light');
+  color: var(--color-brand-text);
+  background-color: var(--color-brand-background);
+  font-size: 100%;
+  line-height: rem(26);
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--duration-long) ease-in-out;
+  @include mqmin($bp-md) {
+    font-size: 125%;
+    line-height: rem(32);
+  }
+  &.menu-drawer-is-open {
+    position: fixed;
+    max-width: 100vw;
+    max-height: 100vh;
+    overflow: hidden;
+    transform: translateX(25%);
+  }
+}
+
+.no-js:not(html) {
+  display: none !important;
+}
+
+html.no-js .no-js:not(html) {
+  display: block !important;
+}
+
+.no-js-inline {
+  display: none !important;
+}
+
+html.no-js .no-js-inline {
+  display: inline-block !important;
+}
+
+html.no-js .no-js-hidden {
+  display: none !important;
+}
+
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+// Set the same top margin for common content elements
+p,
+ul,
+ol,
+figure,
+table,
+dl,
+blockquote,
+q,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+.element-spacing {
+  margin-top: 0;
+  @include element-spacing;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  margin-top: 0;
+  @include element-spacing(2);
+}
+
+// Remove top margins for nested elements
+li ul,
+li ol,
+table table {
+  margin-bottom: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: underline;
+  }
+}
+
+.shopify-challenge__container {
+  margin: 7rem auto;
+}
+
+.list-unstyled {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+  word-wrap: normal !important;
+}
+
+.visually-hidden--inline {
+  margin: 0;
+  height: 1em;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.skip-to-content-link:focus {
+  z-index: 9999;
+  position: inherit;
+  overflow: auto;
+  width: auto;
+  height: auto;
+  clip: auto;
+}
+
+.cover-element {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.heading,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  @include font-variant('heading');
+}
+
+h1,
+.h1 {
+  font-size: rem(64);
+  line-height: rem(57);
+  letter-spacing: rem(1);
+  @include mqmin($bp-md) {
+    font-size: rem(150);
+    line-height: rem(135);
+    letter-spacing: rem(3);
+  }
+}
+
+h2,
+.h2 {
+  font-size: rem(42);
+  line-height: rem(46);
+  letter-spacing: rem(1);
+  @include mqmin($bp-md) {
+    font-size: rem(64);
+    line-height: rem(70);
+  }
+}
+
+h3,
+.h3 {
+  font-size: rem(34);
+  line-height: rem(37);
+  letter-spacing: rem(1);
+  @include mqmin($bp-md) {
+    font-size: rem(44);
+    line-height: rem(57);
+  }
+}
+
+h4,
+.h4 {
+  font-size: rem(26);
+  line-height: rem(31);
+  letter-spacing: rem(0.5);
+  @include mqmin($bp-md) {
+    font-size: rem(32);
+    line-height: rem(42);
+    letter-spacing: rem(0.7);
+  }
+}
+
+h5,
+.h5 {
+  font-size: rem(16);
+  line-height: rem(24);
+  letter-spacing: normal;
+  @include mqmin($bp-md) {
+    font-size: rem(18);
+    line-height: rem(26);
+  }
+}
+
+h6,
+.h6 {
+  font-size: rem(14);
+  line-height: rem(20);
+  letter-spacing: normal;
+  @include mqmin($bp-md) {
+    font-size: rem(16);
+    line-height: rem(24);
+  }
+}
+
+
+.text {
+  &-xs {
+    font-size: rem(12);
+    line-height: rem(19);
+    @include mqmin($bp-md) {
+      font-size: rem(13);
+      line-height: rem(21);
+    }
+  }
+  
+  &-sm {
+    font-size: rem(12);
+    line-height: rem(19);
+    @include mqmin($bp-md) {
+      font-size: rem(16);
+      line-height: rem(26);
+    }
+  }
+  
+  &-md {
+    font-size: rem(20);
+    line-height: rem(30);
+    @include mqmin($bp-md) {
+      font-size: rem(24);
+      line-height: rem(34);
+    }
+  }
+  
+  &-desktop-xs {
+    @include mqmin($bp-md) {
+      font-size: rem(13);
+      line-height: rem(21);
+    }
+  }
+  
+  &-desktop-sm {
+    @include mqmin($bp-md) {
+      font-size: rem(16);
+      line-height: rem(26);
+    }
+  }
+  
+  &-desktop-md {
+    @include mqmin($bp-md) {
+      font-size: rem(20);
+      line-height: rem(32);
+    }
+  }
+  
+  &-desktop-lg {
+    @include mqmin($bp-md) {
+      font-size: rem(24);
+      line-height: rem(34);
+    }
+  }
+
+
+  &-gray {
+    color: var(--color-brand-text-50);
+  }
+  
+  &-success {
+    color: var(--color-brand-success);
+  }
+  
+  &-danger {
+    color: var(--color-brand-danger);
+  }
+  
+  &-primary {
+    color: var(--color-brand-primary);
+  }
+  
+  &-secondary {
+    color: var(--color-brand-secondary);
+  }
+  
+  &-inherit {
+    color: inherit;
+  }
+
+
+  &-capitalize {
+    text-transform: capitalize;
+  }
+
+  &-uppercase {
+    text-transform: uppercase;
+  }
+}
+
+
+
+.weight {
+  &-light {
+    @include font-variant('light');
+  }
+  
+  &-regular {
+    @include font-variant('regular');
+  }
+  
+  &-bold {
+    @include font-variant('heading');
+  }
+}
+
+
+.label {
+  &-small {
+    font-size: rem(12);
+    line-height: rem(16);
+  }
+  
+  &-medium {
+    font-size: rem(14);
+    line-height: rem(20);
+  }
+  
+  &-large {
+    font-size: rem(16);
+    line-height: rem(28);
+  }
+  
+  &-extra-large {
+    font-size: rem(18);
+    line-height: rem(28);
+  }
+  
+  &-desktop-small {
+    @include mqmin($bp-lg) {
+      font-size: rem(12);
+      line-height: rem(16);
+    }
+  }
+  
+  &-desktop-medium {
+    @include mqmin($bp-lg) {
+      font-size: rem(14);
+      line-height: rem(20);
+    }
+  }
+  
+  &-desktop-large {
+    @include mqmin($bp-md) {
+      font-size: rem(16);
+      line-height: rem(20);
+    }
+  }
+  
+  &-desktop-extra-large {
+    @include mqmin($bp-md) {
+      font-size: rem(18);
+      line-height: rem(28);
+    }
+  }
+}
+
+
+
+.content-for-layout {
+  flex: 1 1 auto;
+}
+
+.caption {
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.left {
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.light {
+  opacity: 0.7;
+}
+
+/* links */
+.link {
+  cursor: pointer;
+  display: inline-block;
+  color: var(--color-brand-link);
+  text-decoration: none;
+  .icon {
+    [fill="currentColor"] {
+      fill: var(--color-brand-link);
+    }
+    [stroke="currentColor"] {
+      stroke: var(--color-brand-link);
+    }
+    [fill="currentColorHighlight"]  {
+      fill: var(--color-brand-primary);
+    }
+  }
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none;
+    color: var(--color-brand-link-hover);
+    .icon {
+      [fill="currentColor"] {
+        fill: var(--color-brand-link-hover);
+      }
+      [stroke="currentColor"] {
+        stroke: var(--color-brand-link-hover);
+      }
+      [fill="currentColorHighlight"]  {
+        fill: var(--color-brand-primary);
+      }
+    }
+  }
+  // link in text color
+  &.link--text {
+    --color-brand-link: var(--color-brand-text);
+    --color-brand-link-hover: var(--color-brand-text);
+  }
+  // link with underline
+  &.underlined-link {
+    text-decoration: underline;
+  }
+  // link with underline offset
+  &.underlined-offset-link {
+    text-decoration: underline;
+    text-underline-offset: rem(7);
+    text-decoration-thickness: rem(1);
+    transition: text-decoration-color var(--duration-short) ease-in-out;
+    &:hover,
+    &:focus,
+    &:active {
+      text-decoration-color: transparent;
+      color: currentColor;
+    }
+  }
+}
+
+.link-with-icon {
+  display: inline-flex;
+  font-size: 1rem;
+  letter-spacing: 0.1rem;
+  text-decoration: none;
+  margin-bottom: 4.5rem;
+  white-space: nowrap;
+  .icon {
+    width: 1.5rem;
+    margin-left: 1rem;
+  }
+}
+
+.circle-divider::after {
+  content: '\2022';
+  margin: 0 1rem;
+}
+
+.circle-divider:last-of-type::after {
+  display: none;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background-color: var(--color-border);
+  display: block;
+  margin: var(--container-spacing) 0;
+  @include mqmin($bp-md) {
+    margin: var(--container-spacing-md) 0;
+  }
+}
+
+.full-unstyled-link {
+  text-decoration: none;
+  color: currentColor;
+  display: block;
+}
+
+.placeholder {
+  background-color: var(--color-brand-background-accent);
+  color: var(--color-brand-text-light);
+  fill: var(--color-brand-text-light);
+}
+
+details > * {
+  box-sizing: border-box;
+}
+
+.break {
+  overflow-wrap: break-word;
+}
+
+svg {
+  .fill {
+    fill: var(--color-brand-text);
+  }
+  .stroke {
+    stroke: var(--color-brand-text);
+  }
+}
+
+@media (prefers-reduced-motion) {
+  .motion-reduce {
+    transition: none !important;
+  }
+}
+
+.underlined-link {
+  color: var(--color-brand-link);
+  &:hover {
+    color: var(--color-brand-link-hover);
+  }
+}
+
+/* arrow animation */
+.animate-arrow .icon-arrow path {
+  transform: translateX(-0.25rem);
+  transition: transform var(--duration-short) ease;
+}
+
+.animate-arrow:hover .icon-arrow path {
+  transform: translateX(-0.05rem);
+}
+
+/* base-details-summary */
+.summary {
+  cursor: pointer;
+  list-style: none;
+  position: relative;
+  .icon-caret {
+    height: 0.6rem;
+    right: 1.5rem;
+    top: calc(50% - 0.35rem);
+  }
+  &::-webkit-details-marker {
+    display: none;
+  }
+}
+/* base-focus */
+/*
+  Focus ring - default (with offset)
+*/
+*:focus-visible {
+  outline: 0.0625rem solid var(--color-brand-secondary-25);
+  outline-offset: 0rem;
+}
+
+/* Fallback - for browsers that don't support :focus-visible, a fallback is set for :focus */
+*:focus {
+  outline: 0.0625rem solid var(--color-brand-secondary-25);
+  outline-offset: 0rem;
+}
+
+/* Negate the fallback side-effect for browsers that support :focus-visible */
+*:focus:not(:focus-visible) {
+  outline: 0;
+  box-shadow: none;
+}
+
+/* Dangerous for a11y - Use with care */
+.focus-none {
+  box-shadow: none !important;
+  outline: 0 !important;
+}
