@@ -1,0 +1,87 @@
+@use '../mixins' as *;
+
+.section-two-column-highlight-products {
+  .container {
+    // these are the container margins from 1.0 that were defined in container.scss . Delete these if you want to keep the ones being currently used in 2.0
+    margin-block: rem(80);
+    @include mqmin($bp-md) {
+      margin-block: rem(100);
+    }
+    @include mqmin($bp-lg) {
+      margin-block: rem(200);
+    }
+  }
+  .two-column-highlight-products {
+    &__content {
+      @include mqminmax($bp-lg,$bp-xl) {
+        padding-top: rem(24);
+      }
+    }
+    &__text {
+      margin-top: rem(24);
+    }
+    &__button {
+      margin-top: rem(24);
+      @include mqmin($bp-md) {
+        margin-top: rem(50);
+      }
+    }
+    &__products {
+      position: relative;
+      margin-top: 28.5714%;
+      column-gap: rem(16);
+      @include mqmin($bp-lg) {
+        column-gap: rem(60);
+        // reserve space 142px
+        margin-top: 30.3030%;
+      }
+      @include mqmin($bp-xl) {
+        // reserve space 205px
+        margin-top: 31.2%;
+      }
+      @include mqmin($bp-xxl) {
+        // reserve space 218px
+        margin-top: 24.8%;
+      }
+      .products__product-item {
+        position: relative;
+        z-index: 2;
+      }
+      // color square behind the products
+      .colored-shape {
+        display: block;
+        // represents the width of the .products element minus the desktop column gap
+        width: calc(100% - 60px);
+        height: 0;
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        border-radius: var(--border-radius);
+        // 343 : 163 is equal to the height of the image of the product-link component
+        padding-bottom: 45.4545%;
+        transform: translate(-50%, -29.4478%);
+        @include mqmin($bp-lg) {
+          transform: translate(-50%, -40%);
+          // represents the width of the .products element minus the column gap times 2
+          width: calc(100% - 120px);
+        }
+      }
+    }
+  }
+}
+
+// set stoov heatwave colors with a key and value
+$heatwave-colors: (
+  "heatwave-transparent": "heatwave-transparent.svg",
+  "heatwave-light-blue": "heatwave-light-blue.svg", 
+  "heatwave-salmon": "heatwave-salmon.svg", 
+  "heatwave-olive-green": "heatwave-olive-green.svg"
+);
+// loop the colors and assign a background
+@each $name, $color in $heatwave-colors {
+  .colored-shape--#{$name} {
+    background: url($color) no-repeat center / cover;
+  }
+}

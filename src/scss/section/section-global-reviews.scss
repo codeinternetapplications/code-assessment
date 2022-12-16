@@ -1,0 +1,64 @@
+@use '../mixins' as *;
+
+.global-reviews-section {
+  position: relative;
+  .container {
+    &--reviews-background {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      @include mqmin($bp-md) {
+        min-height: rem(485);
+      }
+      figure {
+        height: 100%;
+        padding-bottom: 0;
+        margin: 0;
+      }
+      .container-content {
+        height: 100%;
+      }
+    }
+    &--background {
+      padding-top: rem(46);
+      @include mqmax($bp-md) {
+        padding-bottom: var(--container-row-spacing-md);
+      }
+      @include mqmin($bp-md) {
+        padding-top: rem(115);
+      }
+    }
+  }
+  .review {
+    position: relative;
+    z-index: 1;
+    max-width: var(--site-center-small);
+    margin: 0 auto;
+    padding: rem(30) 0 rem(100);
+    .icon {
+      width: rem(9);
+      height: rem(9);
+    }
+    &__rating {
+      margin-bottom: rem(28);
+      @include mqmin($bp-md) {
+        margin-bottom: var(--spacing);
+      }
+    }
+    &__heading {
+      max-width: 85%;
+      margin: 0 auto var(--spacing);
+      @include mqmin($bp-md) {
+        max-width: rem(520);
+      }
+    }
+    &__text {
+      margin-bottom: var(--spacing);
+      @include mqmin($bp-md) {
+        margin-bottom: rem(30);
+      }
+    }
+  }
+}

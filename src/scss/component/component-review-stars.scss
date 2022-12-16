@@ -1,0 +1,35 @@
+@use '../mixins' as *;
+
+// Review stars - Used on the Homepage reviews section (when developed) & Product reviews section
+// If this component is imported inside of a scss file, make sure to save that file too when changing this one
+
+@mixin stars-container() {
+  display: flex;
+  justify-content: space-between;
+  height: rem(10);
+  width: rem(110);
+}
+
+.review {
+  &__stars {
+    margin-top: rem(16);
+    margin-bottom: rem(30);
+  }
+  &__stars--inner {
+    @include stars-container();
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+    color: var(--color-off-white);
+  }
+  &__stars--active {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    color: var(--color-black);
+    & > div {
+      @include stars-container();
+    }
+  }
+}

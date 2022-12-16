@@ -1,0 +1,165 @@
+@use '../mixins' as *;
+
+.hero-slider {
+  position: relative;
+  overflow: hidden;
+  .site-center {
+    width: 100%;
+  }
+  &__slide {
+    display: flex;
+    .hero-slider-section:first-of-type & {
+      // padding top given to avoid overlap with the header
+      padding-top: rem(102);
+      box-sizing: border-box;
+      @include mqmin($bp-md) {
+        padding-top: rem(80);
+      }
+    }
+  }
+  &__image-wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    .img--wrapper {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  }
+  &__content-wrapper {
+    box-sizing: border-box;
+    // padding block given to avoid overlap with the "swiper scroll indication"
+    padding-block: rem(16) rem(100);
+    @include mqmin($bp-md) {
+      padding-block: rem(84) rem(102);
+      max-width: var(--site-center-narrow);
+    }
+    &.has-navigation {
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+  }
+  &__heading,
+  &__text {
+    overflow-wrap: break-word;
+    &--primary {
+      color: var(--color-brand-primary);
+    }
+    &--secondary {
+      color: var(--color-brand-secondary);
+    }
+    &--white {
+      color: var(--color-white);
+    }
+  }
+  &__heading {
+    margin-bottom: rem(40);
+    @include mqmin($bp-xl) {
+      margin-bottom: rem(50);
+    }
+    &--custom {
+      font-size: rem(64);
+      line-height: rem(57);
+      letter-spacing: rem(1);
+      @include mqmin($bp-md) {
+        line-height: rem(70);
+      }
+      @include mqmin($bp-xl) {
+        font-size: rem(150);
+        line-height: rem(135);
+        letter-spacing: rem(3);
+      }
+    }
+  }
+  &__text {
+    @include font-variant('regular');
+  }
+  &__buttons {
+    margin-top: rem(30);
+    display: inline-flex;
+    @include mqmin($bp-md) {
+      margin-top: rem(40);
+      flex-direction: row;
+      justify-content: flex-start;
+      &.center {
+        justify-content: center;
+      }
+      &.right {
+        justify-content: flex-end;
+      }
+    }
+  }
+  .swiper-navigation {
+    position: absolute;
+    height: 1px;
+    top: 50%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+  }
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: rem(48);
+    height: rem(48);
+    background-color: transparent;
+    border: 2px solid var(--color-brand-background-alpha-50);
+    box-shadow: 0 0px 2px var(--color-black-50);
+    path {
+      stroke: var(--color-black-50);
+      stroke-width: rem(0.5);
+      fill: var(--color-brand-background-accent);
+    }
+    &:hover:not([disabled]),
+    &:focus:not([disabled]) {
+      border-color: var(--color-brand-background-alpha-50);
+    }
+    @include mqmin($bp-lg) {
+      width: rem(64);
+      height: rem(64);
+    }
+  }
+  .swiper-button-next {
+    right: var(--site-side-spacing);
+    @include mqmin($bp-lg) {
+      right: var(--site-side-spacing-lg);
+    }
+  }
+  .swiper-button-prev {
+    left: var(--site-side-spacing);
+    @include mqmin($bp-lg) {
+      left: var(--site-side-spacing-lg);
+    }
+  }
+  .swiper-scroll-indicators {
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: rem(32);
+    @include mqmin($bp-lg) {
+      bottom: rem(50);
+    }
+    span {
+      width: rem(12);
+      height: rem(12);
+      margin: rem(2) auto;
+      background: var(--color-brand-primary);
+      border-radius: 100%;
+      &:nth-of-type(2) {
+        width: rem(10);
+        height: rem(10);
+        opacity: 50%;
+      }
+      &:last-child {
+        width: rem(8);
+        height: rem(8);
+        opacity: 20%;
+      }
+    }
+  }
+}
