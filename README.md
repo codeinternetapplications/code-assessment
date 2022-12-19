@@ -37,4 +37,4 @@ Please make the assessments in order as listed below. In your fork, create a new
 
 ![Desktop design](https://raw.githubusercontent.com/codeinternetapplications/code-assessment/main/assessment-desktop.png)
 
-**Good luck!**
+**Good luck and have fun!**
