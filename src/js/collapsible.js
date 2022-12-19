@@ -1,11 +1,18 @@
 /*
-Make a collapsible webcompontent
+Make a collapsible webcompontent. Great for making a collapsible footer navigation on mobile (for example ;) ).
 
 HTML Usage:
 <collapsible-element data-options='{}' data-collapsible-group>
   <button type="button" class="button" data-collapsible-trigger>
-    Collapsible button 1
-    {%- render 'global-icon', icon: 'collapsible', icon_size: "xxs" icon_class: "collapsible-trigger-icon" -%}
+    <span>Collapsible button 1</span>
+    <div data-collapsible-trigger-icon>
+      <svg class="icon icon-plus icon--sm" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"  width="16" height="16" viewBox="0 0 16 16">
+        <path fill="currentColor" d="M13.32 7.54H8.53V2.68h-.91v4.86H2.68v.92h4.94v4.86h.91V8.46h4.79v-.92z"/>
+      </svg>
+      <svg class="icon icon-minus icon--sm" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" width="16" height="16" viewBox="0 0 16 16">
+        <path fill="currentColor" d="M2.71 7.55H13.3v.91H2.71z"/>
+      </svg>
+    </div>
   </button>
   <div data-collapsible-target>
     My content

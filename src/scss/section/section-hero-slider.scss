@@ -8,14 +8,6 @@
   }
   &__slide {
     display: flex;
-    .hero-slider-section:first-of-type & {
-      // padding top given to avoid overlap with the header
-      padding-top: rem(102);
-      box-sizing: border-box;
-      @include mqmin($bp-md) {
-        padding-top: rem(80);
-      }
-    }
   }
   &__image-wrapper {
     position: absolute;
@@ -32,10 +24,10 @@
   }
   &__content-wrapper {
     box-sizing: border-box;
-    // padding block given to avoid overlap with the "swiper scroll indication"
-    padding-block: rem(16) rem(100);
+    // padding left/right given to avoid overlap with the "swiper navigation arrows"
+    padding-block: 0 rem(100);
     @include mqmin($bp-md) {
-      padding-block: rem(84) rem(102);
+      padding-block: 0 rem(102);
       max-width: var(--site-center-narrow);
     }
     &.has-navigation {

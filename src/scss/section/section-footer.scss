@@ -133,14 +133,20 @@
       position: absolute;
       right: 0;
       top: 0;
-      width: rem(64);
-      height: rem(64);
+      width: 32px;
+      height: 32px;
+      padding: 0;
+      .icon {
+        width: 48px;
+        height: 48px;
+        margin: 0;
+      }
     }
     .field__input {
       background: var(--color-brand-background);
       border-color: var(--color-brand-background);
       background-color: var(--color-white);
-      padding: rem(15) rem(70) rem(15) rem(26);
+      padding: rem(0) rem(32) rem(0) rem(26);
       line-height: rem(32);
     }
   }
@@ -200,9 +206,9 @@
     &__item {
       &:not(:last-of-type) {
         > .footer-block--menu__link.level-2 {
-          margin-bottom: rem(24);
+          padding-bottom: rem(24);
           @include mqmin($bp-footer) {
-            margin-bottom: rem(8);
+            padding-bottom: rem(8);
           }
         }
       }

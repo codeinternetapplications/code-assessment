@@ -10,9 +10,6 @@
     }
   }
   .is-grid {
-    @include mqmax($bp-md) {
-      row-gap: rem(40);
-    }
     @include mqmin($bp-xl) {
       padding-inline: var(--site-side-spacing-lg);
     }
@@ -32,15 +29,19 @@
   &__icon {
     display: inline-flex;
     padding: rem(10);
-    margin: 0 auto var(--element-spacing) auto;
+    margin: 0 auto calc(var(--element-spacing) * 3) auto;
     transform: scale(1);
     transition: transform var(--duration-default) ease-in-out;
     @include mqmin($bp-xl) {
       padding: rem(24);
-      margin-bottom: rem(24);
     }
     .icon--lg {
       height: rem(48); // icon-xl height, to ensure proper alignment with bigger icons
+    }
+  }
+  &__icon {
+    @include mqmin($bp-xl) {
+      margin-bottom: rem(24);
     }
   }
   &__content {
