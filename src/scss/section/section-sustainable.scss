@@ -1,0 +1,13 @@
+@use '../mixins' as *;
+
+.section-sustainable {
+  &__text {
+    margin-top: var(--spacing);
+  }
+
+  &__content{
+    @include mqmax($bp-md) {
+      padding:calc( var(--spacing));
+    }
+  }
+}
