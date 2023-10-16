@@ -1805,13 +1805,13 @@
         <div class="site-center site-center--compact site-side-spacing">
           <div class="is-grid has-no-row-gap footer__blocks">
             <div class="is-col-12 is-col-9-lg footer-block footer-block--menu">
-              <div class="collapsible">
+              <collapsible-footer>
                 <ul class="footer-block--menu__list footer-block--menu__list level-1">
-                  <li class="footer-block--menu__item level-1">
-                    <div class="footer-block--menu__link level-1 focus-inset">
+                  <li data-collapsible-group class="footer-block--menu__item level-1">
+                    <div data-collapsible-trigger lass="footer-block--menu__link level-1 focus-inset">
                       <span>About</span>
                     </div>
-                    <ul class="footer-block--menu__list level-2 motion-reduce" tabindex="-1">
+                    <ul data-collapsible-target class="footer-block--menu__list level-2 motion-reduce" tabindex="-1">
                       <li class="footer-block--menu__item level-2">
                         <a href="#" class="footer-block--menu__link level-2 focus-inset">Journal</a>
                       </li>
@@ -1832,11 +1832,11 @@
                       </li>
                     </ul>
                   </li>
-                  <li class="footer-block--menu__item level-1">
-                    <div class="footer-block--menu__link level-1 focus-inset">
+                  <li data-collapsible-group class="footer-block--menu__item level-1">
+                    <div data-collapsible-trigger class="footer-block--menu__link level-1 focus-inset">
                       <span>Info</span>
                     </div>
-                    <ul class="footer-block--menu__list level-2 motion-reduce" tabindex="-1">
+                    <ul data-collapsible-target class="footer-block--menu__list level-2 motion-reduce" tabindex="-1">
                       <li class="footer-block--menu__item level-2">
                         <a href="#" class="footer-block--menu__link level-2 focus-inset">Business</a>
                       </li>
@@ -1857,11 +1857,11 @@
                       </li>
                     </ul>
                   </li>
-                  <li class="footer-block--menu__item level-1">
-                    <div class="footer-block--menu__link level-1 focus-inset">
+                  <li data-collapsible-group class="footer-block--menu__item level-1">
+                    <div data-collapsible-trigger class="footer-block--menu__link level-1 focus-inset">
                       <span>Products</span>
                     </div>
-                    <ul class="footer-block--menu__list level-2 motion-reduce" tabindex="-1">
+                    <ul data-collapsible-target class="footer-block--menu__list level-2 motion-reduce" tabindex="-1">
                       <li class="footer-block--menu__item level-2">
                         <a href="#" class="footer-block--menu__link level-2 focus-inset">Ploov - Heating cushions</a>
                       </li>
@@ -1883,7 +1883,7 @@
                     </ul>
                   </li>
                 </ul>
-              </div>
+              </collapsible-footer>
             </div>
             <div class="is-col-12 is-col-3-lg footer-block footer-block--newsletter">
               <p class="h4 footer-block__title">Newsletter</p>

@@ -291,11 +291,20 @@
             display: block;
             height: 100%;
           }
+          @include mqmax($bp-footer) {
+            display: none;
+          }
         }
       }
       .collapsible-is-open {
         [data-collapsible-trigger-icon] {
           transform: rotate(180deg);
+        }
+        [data-collapsible-target] {
+          @include mqmax($bp-footer) {
+            display: block;
+            height: 100%;
+          }
         }
       }
     }
