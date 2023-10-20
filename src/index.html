@@ -2214,7 +2214,7 @@
                   <div class="footer-block--menu__link level-1 focus-inset">
                     <span>About</span>
                   </div>
-                  <ul class="footer-block--menu__list level-2 motion-reduce" tabindex="-1">
+                  <ul class="footer-block--menu__list level-2 motion-reduce collapsed" tabindex="-1">
                     <li class="footer-block--menu__item level-2">
                       <a href="#" class="footer-block--menu__link level-2 focus-inset">Journal</a>
                     </li>
@@ -2239,7 +2239,7 @@
                   <div class="footer-block--menu__link level-1 focus-inset">
                     <span>Info</span>
                   </div>
-                  <ul class="footer-block--menu__list level-2 motion-reduce" tabindex="-1">
+                  <ul class="footer-block--menu__list level-2 motion-reduce collapsed" tabindex="-1">
                     <li class="footer-block--menu__item level-2">
                       <a href="#" class="footer-block--menu__link level-2 focus-inset">Business</a>
                     </li>
@@ -2264,7 +2264,7 @@
                   <div class="footer-block--menu__link level-1 focus-inset">
                     <span>Products</span>
                   </div>
-                  <ul class="footer-block--menu__list level-2 motion-reduce" tabindex="-1">
+                  <ul class="footer-block--menu__list level-2 motion-reduce collapsed" tabindex="-1">
                     <li class="footer-block--menu__item level-2">
                       <a href="#" class="footer-block--menu__link level-2 focus-inset">Ploov - Heating cushions</a>
                     </li>
@@ -2751,6 +2751,12 @@
       soldOut: `Sold out`,
       unavailable: `Unavailable`,
     }
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const collapsibleFooter = new CollapsibleFooter();
+      collapsibleFooter.handleFooterMenu();
+    });
   </script>
 </body>
 

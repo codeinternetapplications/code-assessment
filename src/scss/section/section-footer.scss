@@ -203,8 +203,19 @@
         }
         &.level-2 {
           margin-top: rem(20);
+
+         
         }
       }
+      &.level-2 {
+        
+      &.collapsed {
+       display: none;
+       position: absolute;
+       z-index:-999;
+      }
+    
+    }
     }
     [data-collapsible-group] {
       border: none;
