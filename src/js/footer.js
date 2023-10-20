@@ -40,6 +40,17 @@ class CollapsibleFooter extends Collapsible {
     }
   }
 
+  // Additional method to handle opening and closing of footer elements
+  handleFooterMenu() {
+    const headings = document.querySelectorAll('.footer-block--menu__link.level-1');
+
+    headings.forEach(heading => {
+      heading.addEventListener('click', () => {
+        const submenu = heading.nextElementSibling;
+        submenu.classList.toggle('collapsed');
+      });
+    });
+  }
 }
 
 if (!customElements.get('collapsible-footer')) {

@@ -164,3 +164,22 @@
   }
   
 })();
+
+function scrollPageDown() {
+  // Get the height of the viewport
+  const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+
+  // Scroll down by the height of the viewport
+  window.scrollBy(0, viewportHeight);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const swiperScrollIndicators = document.querySelector('.swiper-scroll-indicators');
+
+
+  if (swiperScrollIndicators) {
+      swiperScrollIndicators.addEventListener('click', function() {
+          scrollPageDown();
+      });
+  }
+});
