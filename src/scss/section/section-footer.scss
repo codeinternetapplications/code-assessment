@@ -136,6 +136,11 @@
       width: 32px;
       height: 32px;
       padding: 0;
+      @include mqmax($bp-md) {
+        width: 48px;
+        height: 48px;
+      }
+      
       .icon {
         width: 48px;
         height: 48px;
@@ -148,7 +153,11 @@
       background-color: var(--color-white);
       padding: rem(0) rem(32) rem(0) rem(26);
       line-height: rem(32);
+      @include mqmax($bp-md) {
+        padding: rem(7) rem(32) rem(7) rem(26);
+      }
     }
+
   }
 
 }
