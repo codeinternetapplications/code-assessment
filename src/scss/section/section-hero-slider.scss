@@ -87,6 +87,10 @@
       }
     }
   }
+  .swiper-scroll-indicators {
+    cursor: pointer;
+  }
+   
   .swiper-navigation {
     position: absolute;
     height: 1px;
@@ -157,3 +161,5 @@
     }
   }
 }
+
+
