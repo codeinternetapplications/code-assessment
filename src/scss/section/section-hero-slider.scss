@@ -23,6 +23,7 @@
     }
   }
   &__content-wrapper {
+    
     box-sizing: border-box;
     // padding left/right given to avoid overlap with the "swiper navigation arrows"
     padding-block: 0 rem(100);
@@ -33,6 +34,7 @@
     &.has-navigation {
       padding-left: 4rem;
       padding-right: 4rem;
+      padding-top: rem(100);
     }
   }
   &__heading,
