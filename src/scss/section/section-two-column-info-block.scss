@@ -100,6 +100,10 @@
       position: relative;
       // reserve extra space below the image for the colored square behind it
       margin-bottom: 30%;
+
+      &--big {
+        margin-bottom: 10%;
+      }
       @include mqmin($bp-md) {
         // reset the extra space for __image element, extra space is covered via the .two-column-info-block element
         margin-bottom: 0;
