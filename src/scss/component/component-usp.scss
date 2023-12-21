@@ -17,6 +17,11 @@
       padding-inline: var(--site-side-spacing-xxl);
     }
   }
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
   &__title {
     margin-bottom: 0;
     @include mqmax($bp-md) {
@@ -49,11 +54,12 @@
       margin-inline: auto;
       max-width: 75%;
     }
+
+    flex-grow: 1;
   }
   &__link {
     text-decoration: none;
     transition: all var(--duration-default) ease-in-out;
-    display: block;
     [fill="currentColor"] {
       transition: all var(--duration-default) ease-in-out;
     }
